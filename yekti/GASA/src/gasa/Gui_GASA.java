@@ -245,144 +245,150 @@ public class Gui_GASA extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jarak_baris))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(nmesin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(lebar_ruang)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(Pc))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(Pm))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel11)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(r))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(max_gen))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(pop_size, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Ta, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                                    .addComponent(alpha)
+                                    .addComponent(T0)
+                                    .addComponent(p))))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jarak_baris))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(nmesin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(lebar_ruang)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel9)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(Pc))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(Pm))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel11)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(r))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel8)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(max_gen))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel7)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(pop_size, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Ta, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
-                                            .addComponent(alpha)
-                                            .addComponent(T0)
-                                            .addComponent(p))))))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(kerjakan)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(search_data)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(kerjakan)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(search_data)
+                                .addGap(26, 26, 26)
+                                .addComponent(error, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(jLabel1)))
-                .addGap(0, 34, Short.MAX_VALUE))
-            .addComponent(jTabbedPane1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(search_data)
-                    .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(nmesin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jarak_baris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(lebar_ruang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(pop_size, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(max_gen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(Pc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel10)
-                                    .addComponent(Pm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel11)
-                                    .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel20)
-                                    .addComponent(p, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(T0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Ta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel14))
-                    .addComponent(alpha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kerjakan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2)
+                            .addComponent(search_data)
+                            .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel3)
+                                            .addComponent(nmesin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jarak_baris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel5)
+                                            .addComponent(lebar_ruang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel7)
+                                            .addComponent(pop_size, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(max_gen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel9)
+                                            .addComponent(Pc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(6, 6, 6)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel10)
+                                            .addComponent(Pm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel11)
+                                            .addComponent(r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel20)
+                                            .addComponent(p, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(T0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel12)))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Ta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13))
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel14))
+                            .addComponent(alpha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(kerjakan))
+                    .addComponent(jTabbedPane1))
+                .addContainerGap())
         );
 
         pack();
@@ -438,8 +444,26 @@ try {
     float[][] neatcl = new float[itungrow][pop]; //neatclearance, indeksnya ngikutin kromorigin bagian mesin
     float[][] xaxis = new float[itungrow][pop];
     
+    String datainputan = "";
     String kromosom = "";
-    String kromosomterpilih = "";
+    String tampilanhasil = "";
+    String iterasike = "";
+    String kromosomawal = "";
+    
+    for (int i = 0; i < pop; i++) {
+        int btssprtr = itungrow-2;
+        int sprtr = (int) (Math.random()*btssprtr+2);
+        kromorigin[0][i] = sprtr;
+        double atas = (double) itungrow;
+        double bawah = (double) sprtr;
+        double hasil = atas / bawah;
+        int pbltn = (int) Math.ceil(hasil);
+        int[] testarray = new int[itungrow];
+        for (int j = 0; j < testarray.length; j++) { // proses ini memasukkan nomer mesin ke dalam kromosom
+            testarray[j] = j + 1;
+        }
+        shuffleArray(testarray); // menshuffle urutan nomer mesin dalam kromosom
+    }
     
     for (int i = 0; i < pop; i++) {
         int btssprtr = itungrow-2;
@@ -489,10 +513,9 @@ try {
             for (int k = 0; k < sprtr; k++) {
                 System.out.print(" "+krom2[j][k]+" ");
             }
-            System.out.println("");
-            
-            
+            System.out.println("");            
          }
+        
          float[][] maxis = new float[itungrow][2];
          int mb = 0;
          int incnrtr = 0;
@@ -528,6 +551,8 @@ try {
              System.out.println("");
          }
          float[][] jarakmesinbaru = new float [itungrow][itungrow];
+         System.out.println("");
+         System.out.println("jarak mesin baru");
          for (int j = 0; j < itungrow; j++) {
             for (int l = 0; l < itungrow; l++) {
                 jarakmesinbaru[j][l] = Math.abs((maxis[j][0] - maxis[l][0]) + (maxis[j][1] - maxis[l][1]));
@@ -627,11 +652,35 @@ try {
         System.out.println(fitness[i]);
     }
     
+    for (int i = 0; i < pop; i++) {
+        for (int j = 0; j < itungrow+1; j++) {
+            kromosomawal = kromosomawal;
+        }
+    }
+    
     // sudah
+    
+    // dari sini iterasi berikutnya seharusnya
+    
+    ////////////////////////////////
+    //                            //
+    //  //////   ///    ///   //  //
+    //  //       ///    ////  //  //
+    //  ////     ///    // // //  //
+    //  //       ///    //  ////  //
+    //  //       ///    //   ///  //
+    //                            //
+    ////////////////////////////////
+    
+    int iterasi = Integer.valueOf(max_gen.getText());
+    
+    for (int a = 0; a < iterasi; a++) {    
     
     // menentukan fitness terbesar
     float fitnessmax = 0;
     int idxfitmax = 0;
+    String kromosomterpilih = "";
+    
     
     for (int i = 0; i < pop; i++) {
         if (fitness[i] > fitnessmax) {
@@ -841,17 +890,23 @@ try {
     
     int[] indexlamabaru = new int[pop];
     int counterinduk = 0;
-    for (int i = 0; i < pop-1; i++) {
-        if ( idxfitmax > i){
-            if (induk[i] == "1") {
-                counterinduk++;
-                indexlamabaru[i] = 1;
+    for (int o = 0; o < 9999; o++) {
+        if (counterinduk <= 1) {
+            for (int i = 0; i < pop-1; i++) {
+                if ( idxfitmax > i){
+                    if (induk[i] == "1") {
+                        counterinduk++;
+                        indexlamabaru[i] = 1;
+                    }
+                } else {
+                    if (induk[i] == "1") {
+                        counterinduk++;
+                        indexlamabaru[i+1] = 1;
+                    }
+                }
             }
         } else {
-            if (induk[i] == "1") {
-                counterinduk++;
-                indexlamabaru[i+1] = 1;
-            }
+            break;
         }
     }
     System.out.println("");
@@ -871,15 +926,26 @@ try {
     }
     System.out.println("");
     
-    for (int i = 0; i < pop; i++) {
-        if (indexlamabaru[i] == 1) {
-            System.out.print("kr"+i+"   ");
-            for (int j = 0; j < indexlamabaru.length; j++) {                
-                System.out.print("   "+kromorigin[j+1][i]+"   ");
+        for (int i = 0; i < pop; i++) {
+            if (indexlamabaru[i] == 1) {
+                System.out.print("kr"+i+" >>");
+                for (int j = 0; j < itungrow; j++) {
+                    System.out.println(" "+kromorigin[j+1][i]);
+                }
+                System.out.println("");
             }
-            System.out.println();
         }
-    }
+    
+    // nulis ini sambil mabok
+//    for (int i = 0; i < pop; i++) {
+//        if (indexlamabaru[i] == 1) {
+//            System.out.print("kr"+i+"   ");
+//            for (int j = 0; j < indexlamabaru.length; j++) {                
+//                //System.out.print("   "+kromorigin[j+1][i]+"   ");
+//            }
+//            System.out.println();
+//        }
+//    }
     
     int[] krossatu = new int[genap];
     int indukkromosom = 0;
@@ -900,6 +966,7 @@ try {
     int jmlpair = genap / 2;
     int[][] pairkros = new int[2][jmlpair];
     System.out.println("");
+        System.out.println("pairkros");
     int intepret = 0;
     for (int i = 0; i < jmlpair; i++) {
         for (int j = 0; j < 2; j++) {
@@ -1025,14 +1092,14 @@ try {
         float alphakros2 = 1 - alphakros1;
         
         for (int j = 0; j < itungrow; j++) {
-            neatkros[j][i+neatcounter] = (alphakros1*neatcl[j][pairkros[0][i]]) +(alphakros2*neatcl[1][i]);
+            neatkros[j][i+neatcounter] = (alphakros1*neatcl[j][pairkros[0][i]]) +(alphakros2*neatcl[pairkros[1][i]][i]);
         }
         neatcounter++;
         float alphakros1v2 = (float) Math.random()*1;
         float alphakros2v2 = 1 - alphakros1;
         
         for (int j = 0; j < itungrow; j++) {
-            neatkros[j][i+neatcounter] = (alphakros1v2*neatcl[j][pairkros[0][i]]) +(alphakros2v2*neatcl[1][i]);
+            neatkros[j][i+neatcounter] = (alphakros1v2*neatcl[j][pairkros[0][i]]) +(alphakros2v2*neatcl[pairkros[1][i]][i]);
         }
     }
     
@@ -1237,6 +1304,7 @@ try {
     
     int[] hasilkromsa = new int[itungrow+1];
     float safitnessakhir = 0;
+    float safungsmax = 0;
     
     // perulangan
     // darisini
@@ -1440,18 +1508,17 @@ try {
     }
     
     System.out.println("");
-    System.out.println("fitness sa paling kecil = "+safitnesspalingbesar);
+    System.out.println("fitness sa paling besar = "+safitnesspalingbesar);
     
     float saindukfitnes = fitness[indexkromosomsa];
+    safungsmax = safungstujuanreal[saindexanakbesar];
     float selisihsa = Math.abs(safitnesspalingbesar - saindukfitnes);
     
     
     System.out.println("");
     System.out.println("fitness induk = "+saindukfitnes);
     
-        
-        
-        float randsa = (float) (Math.random()*1);
+    float randsa = (float) (Math.random()*1);
         
     float sap = 0;
     
@@ -1471,6 +1538,7 @@ try {
             clnneatsa[i] = neatcl[i][saindexanakbesar];
         }
     }
+    
     }
     
     System.out.println("");
@@ -1482,6 +1550,7 @@ try {
     for (int i = 0; i < clnneatsa.length; i++) {
         System.out.print(clnneatsa[i]+"  ");
     }
+    
     
     /////////////////////////////////////
     //                                 //
@@ -1495,10 +1564,12 @@ try {
     
     int[][] popdarikromorigin = new int[itungrow+1][pop-1];
     float[][] neatdarikromorigin = new float[itungrow][pop -1];
+    float[] fctujuandarikromorigin = new float[pop-1];
     float[] fitnessdarikromorigin = new float[pop-1];
     int banyakkromosombaru = pop + (jmlpair*2);
     int[][] popbaru = new int[itungrow+1][banyakkromosombaru];
     float[][] neatbaru = new float[itungrow+1][banyakkromosombaru];
+    float[] fctujuanbaru = new float[banyakkromosombaru];
     float[] fitnessbaru = new float[banyakkromosombaru];
     float[] pekabaru = new float[banyakkromosombaru];
     float[] qikabaru = new float[banyakkromosombaru];
@@ -1510,6 +1581,7 @@ try {
         for (int j = 0; j < itungrow; j++) {
             neatdarikromorigin[j][i] = neatcl[j][indkrom[i]];
         }
+        fctujuandarikromorigin[i] = kecarray[indkrom[i]];
         fitnessdarikromorigin[i] = fitness[indkrom[i]];
     }
     
@@ -1539,11 +1611,14 @@ try {
     
     // masukkan fitness baru
     for (int i = 0; i < pop-1; i++) {
+        fctujuanbaru[i] = fctujuandarikromorigin[i];
         fitnessbaru[i] = fitnessdarikromorigin[i];
     }
     for (int i = 0; i < jmlpair*2; i++) {
+        fctujuanbaru[i+pop-1] = krosfctujuanreal[i];
         fitnessbaru[i+pop-1] = krosfitnes[i];
     }
+    fctujuanbaru[banyakkromosombaru-1] = safungsmax;
     fitnessbaru[banyakkromosombaru-1] = safitnessakhir;
     // ending dari fitness
     
@@ -1598,7 +1673,7 @@ try {
         //System.out.println((i+1)+"\t"+bilcak[i]);
     }
     
-    String hasil = "";
+    
     
     for (int i = 0; i < chosenkromosom.length; i++) {
         int counter = 0;
@@ -1609,19 +1684,19 @@ try {
             chosenkromosom[i] = counter;
         }
         System.out.println((i+1)+"\t"+bilcak[i]+"\t"+(chosenkromosom[i]+1));
-        hasil=hasil+(i+1)+"\t"+bilcak[i]+"\t"+(chosenkromosom[i]+1)+"\r\n";
+        tampilanhasil=tampilanhasil+(i+1)+"\t"+bilcak[i]+"\t"+(chosenkromosom[i]+1)+"\r\n";
     }
     
-    hasil=hasil+"\r\nBerikut ini merupakan kromosom dengan fitness terbesar yang pernah ada \r\n\r\n";
+    tampilanhasil=tampilanhasil+"\r\nBerikut ini merupakan kromosom dengan fitness terbesar yang pernah ada \r\n\r\n";
     
     for (int i = 0; i < itungrow+1; i++) {
-        hasil=hasil+kromorigin[i][idxfitmax]+" ";
+        tampilanhasil=tampilanhasil+kromorigin[i][idxfitmax]+" ";
     }
-    hasil=hasil+" | ";
+    tampilanhasil=tampilanhasil+" | ";
     for (int i = 0; i < itungrow; i++) {
-        hasil=hasil+neatcl[i][idxfitmax]+"\t";
+        tampilanhasil=tampilanhasil+neatcl[i][idxfitmax]+"\t";
     }
-    hasil=hasil+"\r\n\r\nSudah\r\n";
+    tampilanhasil=tampilanhasil+"\r\n\r\nSudah\r\n";
     
     // dari kumpulan ini kita akan memilih kromosom terbaik dengan membandingkan mana fitness yg terbesar. cek dis out
     
@@ -1629,10 +1704,12 @@ try {
     float[] bestfitdex = new float[pop];
     int[][] bestkrom = new int[itungrow+1][pop];
     float[][] bestneat = new float[itungrow][pop];
+    float[] bestfc = new float[pop];
     
     for (int i = 0; i < bestkromdex.length-1; i++) {
         bestkromdex[i] = chosenkromosom[i];
         bestfitdex[i] = fitnessbaru[chosenkromosom[i]];
+        bestfc[i] = fctujuanbaru[chosenkromosom[i]];
         for (int j = 0; j < itungrow+1; j++) {
             bestkrom[j][i] = popbaru[j][chosenkromosom[i]];
         }
@@ -1642,6 +1719,7 @@ try {
     }
     bestkromdex[pop-1] = idxfitmax;
     bestfitdex[pop-1] = fitness[idxfitmax];
+    bestfc[pop-1] = kecarray[idxfitmax];
     for (int i = 0; i < itungrow+1; i++) {
         bestkrom[i][pop-1] = kromorigin[i][idxfitmax];
     }
@@ -1667,6 +1745,26 @@ try {
         System.out.println("");
     }
     
+    
+        for (int i = 0; i < pop; i++) {
+            System.out.print(bestkromdex[i]+"\t"+bestfitdex[i]+"\t"+bestfc[i]+"\t"+bestkrom[0][i]+"  ");
+            for (int j = 0; j < itungrow; j++) {
+                System.out.print(bestneat[j][i]+"  ");
+            }
+            System.out.println("");
+        }
+        
+        for (int i = 0; i < pop; i++) {
+            for (int j = 0; j < itungrow+1; j++) {
+                kromorigin[j][i] = bestkrom[j][i];
+            }
+            for (int j = 0; j < itungrow; j++) {
+                neatcl[j][i] = bestneat[j][i];
+            }
+            kecarray[i] = bestfc[i];
+            fitness[i] = bestfitdex[i];
+        }
+        
     System.out.println("");
     System.out.println("yg terbaik jatuh pada ");
     System.out.println("");
@@ -1678,8 +1776,41 @@ try {
     }
     System.out.println("");
     
+        for (int i = 0; i < pop; i++) {
+            kromosomterpilih = kromosomterpilih+"kr"+(i+1)+"\t";
+            for (int j = 0; j < itungrow+1; j++) {
+                kromosomterpilih = kromosomterpilih+bestkrom[j][i]+"  ";
+            }
+            for (int j = 0; j < itungrow; j++) {
+                kromosomterpilih = kromosomterpilih+bestneat[j][i]+"  ";
+            }
+            kromosomterpilih = kromosomterpilih+"\r\n";
+        }
+        
+        kromosom = kromosomterpilih;
     
-    output_hasil.setText(hasil);
+    }
+    
+    
+    datainputan = "Input Data :\r\n"+
+            "   Jumlah Mesin \t = "+nmesin.getText()+"\r\n"+
+            "   Jarak Baris  \t = "+jarak_baris.getText()+"\r\n"+
+            "   Lebar Ruang  \t = "+lebar_ruang.getText()+"\r\n"+
+            "\r\n"+
+            "Input Parameter :\r\n"+
+            "   Pop Size            \t = "+pop_size.getText()+"\r\n"+
+            "   Max Generasi \t = "+max_gen.getText()+"\r\n"+
+            "   Pc                  \t = "+Pc.getText()+"\r\n"+
+            "   Pm                  \t = "+Pm.getText()+"\r\n"+
+            "   r                   \t = "+r.getText()+"\r\n"+
+            "   p                   \t = "+p.getText()+"\r\n"+
+            "   T0                  \t = "+T0.getText()+"\r\n"+
+            "   Ta                  \t = "+Ta.getText()+"\r\n"+
+            "   Alpha               \t = "+alpha.getText()+"\r\n";
+    
+    tampilanhasil = datainputan + "\r\nBerikut daftar kromosom\r\n\r\n" + kromosom;
+    
+    output_hasil.setText(tampilanhasil);
     
     
     
