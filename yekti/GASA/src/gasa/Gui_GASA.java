@@ -429,15 +429,15 @@ public class Gui_GASA extends javax.swing.JFrame {
 try {
     float b = Float.valueOf(lebar_ruang.getText());
     laksyen = (2*b) - rdk;
-    System.out.println("L': "+laksyen);
+    //aSystem.out.println("L': "+laksyen);
 //    float[] kk = new float[itungrow];
 //    float mm = laksyen;
 //    for (int i = 0; i < itungrow; i++) {
 //        kk[i] = (float) Math.random() * mm + 0;
 //        mm -= kk[i];
-//        System.out.print(" "+kk[i]+" ");
+//        //aSystem.out.print(" "+kk[i]+" ");
 //    }
-    System.out.println("");
+    //aSystem.out.println("");
     int pop = Integer.valueOf(pop_size.getText());
     float[] kecarray = new float[pop];
     int[][] kromorigin = new int[itungrow+1][pop]; //itungrow itu adalah mesin mesinnya, kalo pop itu index kromosomnya.
@@ -476,9 +476,9 @@ try {
         int[] testarray = new int[itungrow];
         for(int pa = 0; pa < testarray.length;pa++){
             testarray[pa] = pa + 1;
-            System.out.print(testarray[pa]+" | ");
+            //aSystem.out.print(testarray[pa]+" | ");
         }
-        System.out.println("kromosom "+(i+1)+" separator "+sprtr);
+        //aSystem.out.println("kromosom "+(i+1)+" separator "+sprtr);
         shuffleArray(testarray);
         int kakkak = 0;
         float btsneatcl = laksyen; //batasan buat nentukan nilai neatclearance
@@ -501,7 +501,7 @@ try {
             for (int k = 0; k < sprtr; k++) {
                 if(kakkak < testarray.length){
                     krom1[j][k] = testarray[kakkak];
-                    System.out.print(" "+String.valueOf(krom1[j][k])+" ");
+                    //aSystem.out.print(" "+String.valueOf(krom1[j][k])+" ");
                     kakkak++;
                 } else {
                     break;
@@ -509,11 +509,11 @@ try {
                 krom2[j][k] = (float) Math.random() * btsrndm + 0;
                 btsrndm -= krom2[j][k];
             }
-            System.out.print(" | ");
+            //aSystem.out.print(" | ");
             for (int k = 0; k < sprtr; k++) {
-                System.out.print(" "+krom2[j][k]+" ");
+                //aSystem.out.print(" "+krom2[j][k]+" ");
             }
-            System.out.println("");            
+            //aSystem.out.println("");            
          }
         
          float[][] maxis = new float[itungrow][2];
@@ -523,7 +523,7 @@ try {
          for (int k = 0; k < itungrow; k++) {
               float dk0 = jarak_mesin[0][0];
               int valarray = testarray[k];
-              System.out.print(" mesin "+valarray+" >>  ");
+              //aSystem.out.print(" mesin "+valarray+" >>  ");
               float lk = dimensi_mesin[valarray-1][0];
               float delta = krom2[mb][incnrtr];
               if(icm < incnrtr + 1){
@@ -538,49 +538,49 @@ try {
                   maxis[k][0] = maxis[k-1][0] + dki + delta + (ldelta/2);
               }
               icm += 3;              
-              System.out.print(" "+df.format(maxis[k][0])+" ");
+              //aSystem.out.print(" "+df.format(maxis[k][0])+" ");
               xaxis[k][i] = maxis[k][0];
               maxis[k][1] = (pbltn - (mb + 1)) * Float.valueOf(jarak_baris.getText());
-              System.out.print(" | " + maxis[k][1]);
+              //aSystem.out.print(" | " + maxis[k][1]);
               incnrtr++;
               if(incnrtr == sprtr){
                  mb += 1;
                  incnrtr = 0;
                  icm = 0;
              }
-             System.out.println("");
+             //aSystem.out.println("");
          }
          float[][] jarakmesinbaru = new float [itungrow][itungrow];
-         System.out.println("");
-         System.out.println("jarak mesin baru");
+         //aSystem.out.println("");
+         //aSystem.out.println("jarak mesin baru");
          for (int j = 0; j < itungrow; j++) {
             for (int l = 0; l < itungrow; l++) {
                 jarakmesinbaru[j][l] = Math.abs((maxis[j][0] - maxis[l][0]) + (maxis[j][1] - maxis[l][1]));
-                System.out.print(" "+df.format(jarakmesinbaru[j][l])+" ");
+                //aSystem.out.print(" "+df.format(jarakmesinbaru[j][l])+" ");
             }
-            System.out.println("");
+            //aSystem.out.println("");
         }
-        System.out.println("");
+        //aSystem.out.println("");
         float[][] fctujuan = new float [itungrow][itungrow];
         for (int j = 0; j < itungrow; j++) {
             for (int k = 0; k < itungrow; k++) {
                 fctujuan[j][k] = jarakmesinbaru[j][k] * matrix_biaya[testarray[j]-1][testarray[k]-1] * matrix_frek[testarray[j]-1][testarray[k]-1];
-                System.out.print(" "+fctujuan[j][k]+" ");
+                //aSystem.out.print(" "+fctujuan[j][k]+" ");
             }
-            System.out.println("");
+            //aSystem.out.println("");
             
         }
         float sum = 0;
-        System.out.println("");
+        //aSystem.out.println("");
         for (int j = 0; j < itungrow; j++) {
             for (int k = 0; k < j; k++) {
-                System.out.print(" "+fctujuan[j][k]);
+                //aSystem.out.print(" "+fctujuan[j][k]);
                 sum += fctujuan[j][k];
             }
             
-            System.out.println("");
+            //aSystem.out.println("");
         }
-        System.out.println(sum);
+        //aSystem.out.println(sum);
         kecarray[i] = sum;
     }
     
@@ -592,18 +592,18 @@ try {
     //
     
     
-    System.out.println("\n==============================================================");
-    System.out.println("");
+    //aSystem.out.println("\n==============================================================");
+    //aSystem.out.println("");
     float small = kecarray[0];
     int index = 0;
     for (int i = 0; i < kecarray.length; i++) {
-        System.out.print(kecarray[i]+"   ");
+        //aSystem.out.print(kecarray[i]+"   ");
         if (kecarray[i] < small) {
             small = kecarray[i];
             index = i;
         }
     }
-    System.out.println("");
+    //aSystem.out.println("");
     
     float[] fortunecookies = kecarray;
     
@@ -628,7 +628,7 @@ try {
                 }
             }
         }
-        System.out.println(vlastmachine[i]);
+        //aSystem.out.println(vlastmachine[i]);
     }
     
     // menentukan nilai lamda
@@ -645,17 +645,23 @@ try {
     float[] fitness = new float[pop];
     float pinput = Float.valueOf(p.getText());
     
-    System.out.println("");
+    //aSystem.out.println("");
     
     for (int i = 0; i < kecarray.length; i++) {
         fitness[i] = 1/(kecarray[i]+(lambda[i]*pinput));
-        System.out.println(fitness[i]);
+        //aSystem.out.println(fitness[i]);
     }
     
     for (int i = 0; i < pop; i++) {
+        kromosomawal = kromosomawal+"kr"+(i+1)+"\t";
         for (int j = 0; j < itungrow+1; j++) {
-            kromosomawal = kromosomawal;
+            kromosomawal = kromosomawal+kromorigin[j][i]+"  ";
         }
+        for (int j = 0; j < itungrow; j++) {
+            kromosomawal = kromosomawal+neatcl[j][i]+"  ";
+        }
+        kromosomawal = kromosomawal+"    "+kecarray[i]+"/"+fitness[i];
+        kromosomawal = kromosomawal+"\r\n";
     }
     
     // sudah
@@ -689,7 +695,7 @@ try {
         }
     }
     
-    System.out.println("fitness terbesar = "+fitnessmax+" pada index "+idxfitmax);
+    //aSystem.out.println("fitness terbesar = "+fitnessmax+" pada index "+idxfitmax);
     
     // fin test
     
@@ -700,13 +706,13 @@ try {
     System.arraycopy(fortunecookies, idxfitmax + 1, fortunecookies, idxfitmax, numelts);
     System.arraycopy(fitnessminus, idxfitmax + 1, fitnessminus, idxfitmax, numelts);
     
-    System.out.println("");
+    //aSystem.out.println("");
     float[] fungsitujuan = new float[pop - 1];
     float[] seperngengek = new float[pop -1];
     float[] pk = new float[pop-1];
     float[] kumul = new float[pop-1];
     float totalseper = 0;
-    System.out.println("fc tujuan \teval         \tpk          \tkumul        \trandom   \tindex");
+    //aSystem.out.println("fc tujuan \teval         \tpk          \tkumul        \trandom   \tindex");
     for (int i = 0; i < fungsitujuan.length; i++) {
         fungsitujuan[i] = fortunecookies[i];
         seperngengek[i] = 1/fungsitujuan[i];
@@ -763,15 +769,15 @@ try {
     
     
     for (int i = 0; i < fungsitujuan.length; i++) {
-        System.out.println(fungsitujuan[i]+"\t"+(fitnessminus[i])+"\t"+pk[i]+"\t"+kumul[i]+"     \t"+mama[i]+"\t"+cik[i]+"\t"+indkrand[i]+"\t"+induk[i]);        
+        //aSystem.out.println(fungsitujuan[i]+"\t"+(fitnessminus[i])+"\t"+pk[i]+"\t"+kumul[i]+"     \t"+mama[i]+"\t"+cik[i]+"\t"+indkrand[i]+"\t"+induk[i]);        
     }
     //menentukan induk
     
-    System.out.println("\ntotal : "+totalseper);
+    //aSystem.out.println("\ntotal : "+totalseper);
     
-    System.out.println("\nindex "+(idxfitmax+1));
-    //System.out.println("");
-    System.out.println("paling kecil = "+small+" pada kromosom "+index);
+    //aSystem.out.println("\nindex "+(idxfitmax+1));
+    ////aSystem.out.println("");
+    //aSystem.out.println("paling kecil = "+small+" pada kromosom "+index);
     
     //menentukan calon induk mutasi
     float[] randkumul = new float[pop - 1];
@@ -808,28 +814,28 @@ try {
                 }
             }
         }
-        System.out.println("rand lagi");
+        //aSystem.out.println("rand lagi");
         numcount++;
     }
     
     for (int i = 0; i < kumul.length; i++) {
-        System.out.println(kumul[i]+"\t"+randkumul[i]+"\t"+calindmut[i]+"\t"+randmut[i]+"\t"+indmut[i]+"\t"+indkrom[i]);
+        //aSystem.out.println(kumul[i]+"\t"+randkumul[i]+"\t"+calindmut[i]+"\t"+randmut[i]+"\t"+indmut[i]+"\t"+indkrom[i]);
     }
     
     for (int i = 0; i < pop; i++) {
         for (int j = 0; j < itungrow+1; j++) {
-            System.out.print(" "+kromorigin[j][i]+"    ");
+            //aSystem.out.print(" "+kromorigin[j][i]+"    ");
         }
         for (int j = 0; j < itungrow; j++) {
-            System.out.print(neatcl[j][i]+"\t");            
+            //aSystem.out.print(neatcl[j][i]+"\t");            
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     for (int i = 0; i < pop; i++) {
         for (int j = 0; j < itungrow; j++) {
-            System.out.print(" "+xaxis[j][i]);
+            //aSystem.out.print(" "+xaxis[j][i]);
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     
     
@@ -850,7 +856,7 @@ try {
 //                }
 //            }
 //        }
-//        System.out.println(vlastmachine[i]);
+//        //aSystem.out.println(vlastmachine[i]);
 //    }
 //    
 //    // menentukan nilai lamda
@@ -867,11 +873,11 @@ try {
 //    float[] fitness = new float[pop];
 //    float pinput = Float.valueOf(p.getText());
 //    
-//    System.out.println("");
+//    //aSystem.out.println("");
 //    
 //    for (int i = 0; i < kecarray.length; i++) {
 //        fitness[i] = 1/(kecarray[i]+lambda[i]+pinput);
-//        System.out.println(fitness[i]);
+//        //aSystem.out.println(fitness[i]);
 //    }
 //    
 //    // sudah
@@ -885,8 +891,8 @@ try {
     //     /////   //   //    //////    //////     //////      //////         ///        ////////   //   //    //
     //                                                                                                         //
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    System.out.println("========================================");
-    System.out.println("crossover");
+    //aSystem.out.println("========================================");
+    //aSystem.out.println("crossover");
     
     int[] indexlamabaru = new int[pop];
     int counterinduk = 0;
@@ -909,8 +915,8 @@ try {
             break;
         }
     }
-    System.out.println("");
-    System.out.println("jumlah induk = "+counterinduk);
+    //aSystem.out.println("");
+    //aSystem.out.println("jumlah induk = "+counterinduk);
     
     int genap = 0;
     if (counterinduk % 2 != 0) {
@@ -918,32 +924,32 @@ try {
     } else {
         genap = counterinduk;
     }
-    System.out.println("hasil genap = "+genap);
-    System.out.println("");
+    //aSystem.out.println("hasil genap = "+genap);
+    //aSystem.out.println("");
     
     for (int i = 0; i < indexlamabaru.length; i++) {
-        System.out.print(indexlamabaru[i]+"\t");
+        //aSystem.out.print(indexlamabaru[i]+"\t");
     }
-    System.out.println("");
+    //aSystem.out.println("");
     
         for (int i = 0; i < pop; i++) {
             if (indexlamabaru[i] == 1) {
-                System.out.print("kr"+i+" >>");
+                //aSystem.out.print("kr"+i+" >>");
                 for (int j = 0; j < itungrow; j++) {
-                    System.out.println(" "+kromorigin[j+1][i]);
+                    //aSystem.out.print(" "+kromorigin[j+1][i]);
                 }
-                System.out.println("");
+                //aSystem.out.println("");
             }
         }
     
     // nulis ini sambil mabok
 //    for (int i = 0; i < pop; i++) {
 //        if (indexlamabaru[i] == 1) {
-//            System.out.print("kr"+i+"   ");
+//            //aSystem.out.print("kr"+i+"   ");
 //            for (int j = 0; j < indexlamabaru.length; j++) {                
-//                //System.out.print("   "+kromorigin[j+1][i]+"   ");
+//                ////aSystem.out.print("   "+kromorigin[j+1][i]+"   ");
 //            }
-//            System.out.println();
+//            //aSystem.out.println();
 //        }
 //    }
     
@@ -958,23 +964,23 @@ try {
             break;
         }
     }
-    System.out.println("");
+    //aSystem.out.println("");
     for (int i = 0; i < krossatu.length; i++) {
-        System.out.println(krossatu[i]);
+        //aSystem.out.println(krossatu[i]);
     }
     
     int jmlpair = genap / 2;
     int[][] pairkros = new int[2][jmlpair];
-    System.out.println("");
-        System.out.println("pairkros");
+    //aSystem.out.println("");
+        //aSystem.out.println("pairkros");
     int intepret = 0;
     for (int i = 0; i < jmlpair; i++) {
         for (int j = 0; j < 2; j++) {
             pairkros[j][i] = krossatu[intepret];
             intepret++;
-            System.out.print(pairkros[j][i]+" ");
+            //aSystem.out.print(pairkros[j][i]+" ");
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     
     
@@ -993,7 +999,7 @@ try {
         } // sampek sini
         int batasrand = (int) (Math.random()*((batas[0]-batas[1])+1)) + batas[1]; // proses ngerandomnya
         anakkros[0][i+penandabaris] = batasrand; // dimasukkan ke anak v.1
-        System.out.println("batas "+batas[0]+" + "+batas[1]+" = "+anakkros[0][i+penandabaris]);
+        //aSystem.out.println("batas "+batas[0]+" + "+batas[1]+" = "+anakkros[0][i+penandabaris]);
         penandabaris++;
         anakkros[0][i+penandabaris] = (int) (Math.random()*((batas[0]-batas[1])+1)) + batas[1]; // dimasukkan ke anak v.2
         
@@ -1012,7 +1018,7 @@ try {
         }
         
         int perbrand = randbesar - randkecil + 1;
-        System.out.println(randbesar+" - "+randkecil+" = "+perbrand);
+        //aSystem.out.println(randbesar+" - "+randkecil+" = "+perbrand);
         String[] dataindukkedua = new String[itungrow];
         for (int j = 0; j < itungrow; j++) {
             dataindukkedua[j] = String.valueOf(kromorigin[j+1][pairkros[1][i]]);
@@ -1023,9 +1029,9 @@ try {
             list.remove(String.valueOf(kromorigin[j+randkecil][pairkros[0][i]]));
             dataindukkedua = list.toArray(new String[0]);
         }
-        System.out.print("data induk kedua "+dataindukkedua.length+" = ");
+        //aSystem.out.print("data induk kedua "+dataindukkedua.length+" = ");
         for (int j = 0; j < dataindukkedua.length; j++) {
-            System.out.print(dataindukkedua[j]+" ");
+            //aSystem.out.print(dataindukkedua[j]+" ");
         }
         int dikcounter = 0;
         for (int j = 0; j < dataindukkedua.length; j++) {
@@ -1036,7 +1042,7 @@ try {
                 anakkros[j+randbesar-dikcounter+1][i+penandabarismesin] = Integer.valueOf(dataindukkedua[j]);
             }
         }
-        System.out.println("");
+        //aSystem.out.println("");
         
         penandabarismesin++;
         
@@ -1055,7 +1061,7 @@ try {
         }
         
         int perbrandv2 = randbesarv2 - randkecilv2 + 1;
-        System.out.println(randbesarv2+" - "+randkecilv2+" = "+perbrandv2);
+        //aSystem.out.println(randbesarv2+" - "+randkecilv2+" = "+perbrandv2);
         String[] dataindukkeduav2 = new String[itungrow];
         for (int j = 0; j < itungrow; j++) {
             dataindukkeduav2[j] = String.valueOf(kromorigin[j+1][pairkros[1][i]]);
@@ -1066,9 +1072,9 @@ try {
             list.remove(String.valueOf(kromorigin[j+randkecilv2][pairkros[0][i]]));
             dataindukkeduav2 = list.toArray(new String[0]);
         }
-        System.out.print("data induk kedua v2 "+dataindukkeduav2.length+" = ");
+        //aSystem.out.print("data induk kedua v2 "+dataindukkeduav2.length+" = ");
         for (int j = 0; j < dataindukkeduav2.length; j++) {
-            System.out.print(dataindukkeduav2[j]+" ");
+            //aSystem.out.print(dataindukkeduav2[j]+" ");
         }
         int dikcounterv2 = 0;
         for (int j = 0; j < dataindukkeduav2.length; j++) {
@@ -1079,7 +1085,7 @@ try {
                 anakkros[j+randbesarv2-dikcounterv2+1][i+penandabarismesin] = Integer.valueOf(dataindukkeduav2[j]);
             }
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     
     
@@ -1092,25 +1098,25 @@ try {
         float alphakros2 = 1 - alphakros1;
         
         for (int j = 0; j < itungrow; j++) {
-            neatkros[j][i+neatcounter] = (alphakros1*neatcl[j][pairkros[0][i]]) +(alphakros2*neatcl[pairkros[1][i]][i]);
+            neatkros[j][i+neatcounter] = (alphakros1*neatcl[j][pairkros[0][i]])+(alphakros2*neatcl[j][pairkros[1][i]]);//(alphakros1*neatcl[j][pairkros[0][i]]) +(alphakros2*neatcl[pairkros[1][i]][i]);
         }
         neatcounter++;
         float alphakros1v2 = (float) Math.random()*1;
         float alphakros2v2 = 1 - alphakros1;
         
         for (int j = 0; j < itungrow; j++) {
-            neatkros[j][i+neatcounter] = (alphakros1v2*neatcl[j][pairkros[0][i]]) +(alphakros2v2*neatcl[pairkros[1][i]][i]);
+            neatkros[j][i+neatcounter] = (alphakros1v2*neatcl[j][pairkros[0][i]])+(alphakros2v2*neatcl[j][pairkros[1][i]]);//(alphakros1v2*neatcl[j][pairkros[0][i]]) +(alphakros2v2*neatcl[pairkros[1][i]][i]);
         }
     }
     
     for (int i = 0; i < (jmlpair*2); i++) {
         for (int j = 0; j < itungrow+1; j++) {
-            System.out.print(anakkros[j][i]+" ");
+            //aSystem.out.print(anakkros[j][i]+" ");
         }
         for (int j = 0; j < itungrow; j++) {
-            System.out.print("  "+String.format("%,4f",neatkros[j][i])+" ");
+            //aSystem.out.print("  "+String.format("%,4f",neatkros[j][i])+" ");
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     
     // menghitung fungsi tujuan crossover
@@ -1119,7 +1125,7 @@ try {
     float[][] yaxiskros = new float[itungrow][jmlpair*2];
     
     // menentukan xaxis crossover
-    System.out.println("xaxis ");
+    //aSystem.out.println("xaxis ");
     
     for (int i = 0; i < jmlpair*2; i++) {
         int counter = 0;
@@ -1133,14 +1139,14 @@ try {
             } else {
                 xaxiskros[j][i] = xaxiskros[j-1][i] + neatkros[j][i] + ((dimensi_mesin[anakkros[j+1][i]-1][0])/2);
             }
-            System.out.println(xaxiskros[j][i]+"/"+counter+"  ");
+            //aSystem.out.println(xaxiskros[j][i]+"/"+counter+"  ");
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     
     // menentukan yaxis crossover
     
-    System.out.println("yaxis");
+    //aSystem.out.println("yaxis");
     for (int i = 0; i < jmlpair*2; i++) {
         int counter = 0;
         for (int j = 0; j < itungrow; j++) {
@@ -1148,9 +1154,9 @@ try {
                 counter++;
             }
             yaxiskros[j][i] = Float.valueOf(jarak_baris.getText())*(counter-1);
-            System.out.print(yaxiskros[j][i]+" ");
+            //aSystem.out.print(yaxiskros[j][i]+" ");
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     
     
@@ -1167,12 +1173,12 @@ try {
         for (int j = 0; j < itungrow; j++) {
             for (int k = 0; k < itungrow; k++) {
                 krosjarakmesin[j][k][i] = Math.abs((xaxiskros[j][i] - xaxiskros[k][i]) + (yaxiskros[j][i] - yaxiskros[j][i]));
-                System.out.print(String.format("%,3f", krosjarakmesin[j][k][i])+"\t");
+                //aSystem.out.print(String.format("%,3f", krosjarakmesin[j][k][i])+"\t");
             }
-            System.out.println("");
+            //aSystem.out.println("");
         }
-        System.out.println("");
-        System.out.println("kromosom "+(i+1));
+        //aSystem.out.println("");
+        //aSystem.out.println("kromosom "+(i+1));
     }
     
     // menentukan matrix fungsi tujuan
@@ -1181,12 +1187,12 @@ try {
         for (int j = 0; j < itungrow; j++) {
             for (int k = 0; k < itungrow; k++) {
                 krosmatrixfungsitujuan[j][k][i] = matrix_biaya[kromorigin[j+1][i]-1][kromorigin[k+1][i]-1] * matrix_frek[kromorigin[j+1][i]-1][kromorigin[k+1][i]-1] * krosjarakmesin[j][k][i];
-                System.out.print(String.format("%,5f", krosmatrixfungsitujuan[j][k][i])+"\t");
+                //aSystem.out.print(String.format("%,5f", krosmatrixfungsitujuan[j][k][i])+"\t");
                 krosfctujuan[i] += krosmatrixfungsitujuan[j][k][i];
             }
-            System.out.println("");
+            //aSystem.out.println("");
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     
     // menentukan fungsi tujuan setiap kromosom
@@ -1196,7 +1202,7 @@ try {
     }
     
     for (int i = 0; i < jmlpair*2; i++) {
-        System.out.println("kromosom "+(i+1)+" fc tujuan = "+krosfctujuan[i]+"/"+krosfctujuanreal[i]);
+        //aSystem.out.println("kromosom "+(i+1)+" fc tujuan = "+krosfctujuan[i]+"/"+krosfctujuanreal[i]);
     }
     
     // sudah
@@ -1224,7 +1230,7 @@ try {
             }
         }
         kroslamdatrue[i] = kroslamda[i] - laksyen;
-        System.out.println("kromosom "+(i+1)+" lamda nya "+kroslamda[i]+" - "+laksyen+" = "+kroslamdatrue[i]);
+        //aSystem.out.println("kromosom "+(i+1)+" lamda nya "+kroslamda[i]+" - "+laksyen+" = "+kroslamdatrue[i]);
     }
     
     
@@ -1232,7 +1238,7 @@ try {
     
     for (int i = 0; i < jmlpair*2; i++) {
         krosfitnes[i] = 1/(krosfctujuanreal[i]+kroslamdatrue[i]+pinput);
-        System.out.println("kromosom "+(i+1)+" fitness nya "+krosfitnes[i]);
+        //aSystem.out.println("kromosom "+(i+1)+" fitness nya "+krosfitnes[i]);
     }
     
     
@@ -1270,14 +1276,14 @@ try {
     float yekticounter = ((suhuawal - suhuakhir)/suhuawal)/alfa;
     int testcounter = (int) Math.round(yekticounter);
     
-    System.out.println("yekti counter = "+yekticounter);
-    System.out.println("yekti counter dibulatkan = "+testcounter);
+    //aSystem.out.println("yekti counter = "+yekticounter);
+    //aSystem.out.println("yekti counter dibulatkan = "+testcounter);
     
     int indexkromosomsa = indkrom[Arrays.asList(indmut).indexOf("ind")];
-    System.out.println("index = "+indexkromosomsa);
-    System.out.println("");
-    System.out.println("==================================");
-    System.out.println("s.a.");
+    //aSystem.out.println("index = "+indexkromosomsa);
+    //aSystem.out.println("");
+    //aSystem.out.println("==================================");
+    //aSystem.out.println("s.a.");
     
     int[] clnkromsa = new int[itungrow+1];
     float[] clnneatsa = new float[itungrow];
@@ -1291,9 +1297,9 @@ try {
     }
     
     for (int i = 0; i < itungrow; i++) {
-        System.out.print(String.format("%,5f", neatcl[i][indexkromosomsa])+"   ");
+        //aSystem.out.print(String.format("%,5f", neatcl[i][indexkromosomsa])+"   ");
     }
-    System.out.println("");
+    //aSystem.out.println("");
     
     
     
@@ -1316,13 +1322,13 @@ try {
     for (int i = 0; i < rinput*2; i++) {
         for (int j = 0; j < clnkromsa.length; j++) {
             kromsa[j][i] = clnkromsa[j];
-            System.out.print(kromsa[j][i]+" ");
+            //aSystem.out.print(kromsa[j][i]+" ");
         }
         for (int j = 0; j < clnneatsa.length; j++) {
             neatsa[j][i] = clnneatsa[j];
-            System.out.print("  "+neatsa[j][i]+"  ");
+            //aSystem.out.print("  "+neatsa[j][i]+"  ");
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     
     int randindsa = (int) (Math.random()*itungrow)+1;
@@ -1331,21 +1337,21 @@ try {
         neatsa[randindsa-1][i] = (clnneatsa[randindsa-1]/2)*(i+1);
     }
     
-    System.out.println("");
-    System.out.println("setelah di proses");
-    System.out.println("");
+    //aSystem.out.println("");
+    //aSystem.out.println("setelah di proses");
+    //aSystem.out.println("");
     
     // mutation
         
     
     for (int i = 0; i < rinput*2; i++) {
         for (int j = 0; j < clnkromsa.length; j++) {
-            System.out.print(kromsa[j][i]+" ");
+            //aSystem.out.print(kromsa[j][i]+" ");
         }
         for (int j = 0; j < clnneatsa.length; j++) {
-            System.out.print("  "+String.format("%,5f", neatsa[j][i])+"  ");
+            //aSystem.out.print("  "+String.format("%,5f", neatsa[j][i])+"  ");
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     
     float[][] xaxissa = new float[itungrow][rinput*2];
@@ -1380,18 +1386,18 @@ try {
     }
     // sudah
     
-    System.out.println("");
-    System.out.println("axis");
-    System.out.println("");
+    //aSystem.out.println("");
+    //aSystem.out.println("axis");
+    //aSystem.out.println("");
     for (int i = 0; i < rinput*2; i++) {
         for (int j = 0; j < itungrow; j++) {
-            System.out.print(String.format("%,3f", xaxissa[j][i])+"\t");
+            //aSystem.out.print(String.format("%,3f", xaxissa[j][i])+"\t");
         }
-        System.out.print(" | ");
+        //aSystem.out.print(" | ");
         for (int j = 0; j < yaxissa.length; j++) {
-            System.out.print(yaxissa[j][i]+"  ");
+            //aSystem.out.print(yaxissa[j][i]+"  ");
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     
     float[][][] sajarakmesin = new float[itungrow][itungrow][rinput*2];
@@ -1400,16 +1406,16 @@ try {
     float[] safungstujuanreal = new float[rinput*2];
     
     for (int i = 0; i < rinput*2; i++) {
-        System.out.println("");
-        System.out.println("kromosom = "+(i+1));
+        //aSystem.out.println("");
+        //aSystem.out.println("kromosom = "+(i+1));
         
         //nentukan jarak antar mesin
         for (int j = 0; j < itungrow; j++) {
             for (int k = 0; k < itungrow; k++) {
                 sajarakmesin[j][k][i] = Math.abs(xaxissa[j][i] - xaxissa[k][i]) + Math.abs(yaxissa[j][i] - yaxissa[k][i]);
-                System.out.print(String.format("%,3f",sajarakmesin[j][k][i])+"\t");
+                //aSystem.out.print(String.format("%,3f",sajarakmesin[j][k][i])+"\t");
             }
-            System.out.println("");
+            //aSystem.out.println("");
         }
         
         // sudah sampek sini
@@ -1432,19 +1438,19 @@ try {
     
     // sudah
     
-    System.out.println("");
-    System.out.println("matrix fungsi tujuan");
-    System.out.println("");
+    //aSystem.out.println("");
+    //aSystem.out.println("matrix fungsi tujuan");
+    //aSystem.out.println("");
     
     // ngeprint
     for (int i = 0; i < rinput*2; i++) {
-        System.out.println("");
-        System.out.println("kromosom "+(i+1)+" / fsum = "+safungstujuan[i]+" fsumreal = "+safungstujuanreal[i]);
+        //aSystem.out.println("");
+        //aSystem.out.println("kromosom "+(i+1)+" / fsum = "+safungstujuan[i]+" fsumreal = "+safungstujuanreal[i]);
         for (int j = 0; j < itungrow; j++) {
             for (int k = 0; k < itungrow; k++) {
-                System.out.print(String.format("%,2f", samatrixfungsitujuan[j][k][i])+"\t");
+                //aSystem.out.print(String.format("%,2f", samatrixfungsitujuan[j][k][i])+"\t");
             }
-            System.out.println("");
+            //aSystem.out.println("");
         }
     }
     // sudah
@@ -1456,13 +1462,13 @@ try {
     float fcsapalingkecil = 0;
     
         
-    System.out.println("");
-    System.out.println("fungsi tujuan induk = "+fungsitujuaninduksa);
+    //aSystem.out.println("");
+    //aSystem.out.println("fungsi tujuan induk = "+fungsitujuaninduksa);
     
     // menentukan lamda sa
     
-    System.out.println("");
-    System.out.println("lamda sa");
+    //aSystem.out.println("");
+    //aSystem.out.println("lamda sa");
     
     float[] protolamdasa = new float[rinput*2];
     float[] vlastmachinesa = new float[rinput*2];
@@ -1482,19 +1488,19 @@ try {
             }
         }
         protolamdasa[i] = vlastmachinesa[i] - laksyen;
-        System.out.println(protolamdasa[i]);
+        //aSystem.out.println(protolamdasa[i]);
     }
     
     // menentukan fitness buat anak sa (biar dempal jadi binaragawan)
     
-    System.out.println("");
-    System.out.println("fitness sa");
+    //aSystem.out.println("");
+    //aSystem.out.println("fitness sa");
     
     float[] safitness = new float[rinput*2];
     
     for (int i = 0; i < rinput*2; i++) {
         safitness[i] = 1/(safungstujuanreal[i]+protolamdasa[i]+pinput);
-        System.out.println(safitness[i]);
+        //aSystem.out.println(safitness[i]);
     }
     
     float safitnesspalingbesar = 0;
@@ -1507,16 +1513,16 @@ try {
         }
     }
     
-    System.out.println("");
-    System.out.println("fitness sa paling besar = "+safitnesspalingbesar);
+    //aSystem.out.println("");
+    //aSystem.out.println("fitness sa paling besar = "+safitnesspalingbesar);
     
     float saindukfitnes = fitness[indexkromosomsa];
     safungsmax = safungstujuanreal[saindexanakbesar];
     float selisihsa = Math.abs(safitnesspalingbesar - saindukfitnes);
     
     
-    System.out.println("");
-    System.out.println("fitness induk = "+saindukfitnes);
+    //aSystem.out.println("");
+    //aSystem.out.println("fitness induk = "+saindukfitnes);
     
     float randsa = (float) (Math.random()*1);
         
@@ -1524,7 +1530,7 @@ try {
     
     if (saindukfitnes > safitnesspalingbesar) {
         sap = (float) Math.exp(-selisihsa/(suhuawal-(suhuawal*x*alfa)));
-        System.out.println("P = "+sap);
+        //aSystem.out.println("P = "+sap);
         if (sap >= randsa) {
             for (int i = 0; i < clnneatsa.length; i++) {
                 clnneatsa[i] = neatcl[i][saindexanakbesar];
@@ -1541,14 +1547,14 @@ try {
     
     }
     
-    System.out.println("");
+    //aSystem.out.println("");
     
     for (int i = 0; i < clnkromsa.length; i++) {
-        System.out.print(clnkromsa[i] + "  ");
+        //aSystem.out.print(clnkromsa[i] + "  ");
     }
-    System.out.print(" | ");
+    //aSystem.out.print(" | ");
     for (int i = 0; i < clnneatsa.length; i++) {
-        System.out.print(clnneatsa[i]+"  ");
+        //aSystem.out.print(clnneatsa[i]+"  ");
     }
     
     
@@ -1644,33 +1650,33 @@ try {
     
     // sudah
     
-    System.out.println("");
+    //aSystem.out.println("");
     
     for (int i = 0; i < banyakkromosombaru; i++) {
         for (int j = 0; j < itungrow+1; j++) {
-            System.out.print(popbaru[j][i]+" ");
+            //aSystem.out.print(popbaru[j][i]+" ");
         }
         for (int j = 0; j < itungrow; j++) {
-            System.out.print("  "+String.format("%,4f", neatbaru[j][i])+" ");
+            //aSystem.out.print("  "+String.format("%,4f", neatbaru[j][i])+" ");
         }
-        System.out.println();
+        //aSystem.out.println();
     }
     
-    System.out.println("");
+    //aSystem.out.println("");
     
     for (int i = 0; i < banyakkromosombaru; i++) {
-        System.out.println("kr "+(i+1)+"\t"+String.format("%,2f", fitnessbaru[i])+"\t"+String.format("%,2f", pekabaru[i])+"\t"+String.format("%,2f", qikabaru[i]));
+        //aSystem.out.println("kr "+(i+1)+"\t"+String.format("%,2f", fitnessbaru[i])+"\t"+String.format("%,2f", pekabaru[i])+"\t"+String.format("%,2f", qikabaru[i]));
     }
-    System.out.println("jml \t"+String.format("%,2f", jumlahfitnessbaru));
+    //aSystem.out.println("jml \t"+String.format("%,2f", jumlahfitnessbaru));
     
-    System.out.println("");
+    //aSystem.out.println("");
     
     float[] bilcak = new float[pop-1];
     int[] chosenkromosom = new int[pop-1];
     
     for (int i = 0; i < bilcak.length; i++) {
         bilcak[i] = (float) ((Math.random()*0.9)+0.1);
-        //System.out.println((i+1)+"\t"+bilcak[i]);
+        ////aSystem.out.println((i+1)+"\t"+bilcak[i]);
     }
     
     
@@ -1683,7 +1689,7 @@ try {
             }
             chosenkromosom[i] = counter;
         }
-        System.out.println((i+1)+"\t"+bilcak[i]+"\t"+(chosenkromosom[i]+1));
+        //aSystem.out.println((i+1)+"\t"+bilcak[i]+"\t"+(chosenkromosom[i]+1));
         tampilanhasil=tampilanhasil+(i+1)+"\t"+bilcak[i]+"\t"+(chosenkromosom[i]+1)+"\r\n";
     }
     
@@ -1738,20 +1744,20 @@ try {
     }
     
     for (int i = 0; i < bestkromdex.length; i++) {
-        System.out.print(bestkromdex[i]+"  "+String.format("%,5f", bestfitdex[i])+"   >> ");
+        //aSystem.out.print(bestkromdex[i]+"  "+String.format("%,5f", bestfitdex[i])+"   >> ");
         for (int j = 0; j < bestneat.length; j++) {
-            System.out.print(bestkrom[j][i]+"  ");
+            //aSystem.out.print(bestkrom[j][i]+"  ");
         }
-        System.out.println("");
+        //aSystem.out.println("");
     }
     
     
         for (int i = 0; i < pop; i++) {
-            System.out.print(bestkromdex[i]+"\t"+bestfitdex[i]+"\t"+bestfc[i]+"\t"+bestkrom[0][i]+"  ");
+            //aSystem.out.print(bestkromdex[i]+"\t"+bestfitdex[i]+"\t"+bestfc[i]+"\t"+bestkrom[0][i]+"  ");
             for (int j = 0; j < itungrow; j++) {
-                System.out.print(bestneat[j][i]+"  ");
+                //aSystem.out.print(bestneat[j][i]+"  ");
             }
-            System.out.println("");
+            //aSystem.out.println("");
         }
         
         for (int i = 0; i < pop; i++) {
@@ -1765,16 +1771,16 @@ try {
             fitness[i] = bestfitdex[i];
         }
         
-    System.out.println("");
-    System.out.println("yg terbaik jatuh pada ");
-    System.out.println("");
+    //aSystem.out.println("");
+    //aSystem.out.println("yg terbaik jatuh pada ");
+    //aSystem.out.println("");
     for (int j = 0; j < bestneat.length; j++) {
-        System.out.print(bestkrom[j][finalbestdex]+"  ");
+        //aSystem.out.print(bestkrom[j][finalbestdex]+"  ");
     }
     for (int j = 0; j < bestneat.length; j++) {
-        System.out.print(String.format("%,5f", bestneat[j][finalbestdex])+"  ");
+        //aSystem.out.print(String.format("%,5f", bestneat[j][finalbestdex])+"  ");
     }
-    System.out.println("");
+    //aSystem.out.println("");
     
         for (int i = 0; i < pop; i++) {
             kromosomterpilih = kromosomterpilih+"kr"+(i+1)+"\t";
@@ -1788,6 +1794,8 @@ try {
         }
         
         kromosom = kromosomterpilih;
+        
+        System.out.println(a+1);
     
     }
     
@@ -1808,7 +1816,7 @@ try {
             "   Ta                  \t = "+Ta.getText()+"\r\n"+
             "   Alpha               \t = "+alpha.getText()+"\r\n";
     
-    tampilanhasil = datainputan + "\r\nBerikut daftar kromosom\r\n\r\n" + kromosom;
+    tampilanhasil = datainputan + "\r\nBerikut daftar kromosom awal\r\n \r\n" + kromosomawal + "\r\nBerikut daftar kromosom terpilih\r\n\r\n" + kromosom;
     
     output_hasil.setText(tampilanhasil);
     
@@ -1816,20 +1824,20 @@ try {
     
 //    for (int i = 0; i < indkrom.length; i++) {
 //        for (int j = 0; j < itungrow+1; j++) {
-//            System.out.print(popdarikromorigin[j][i] + " ");
+//            //aSystem.out.print(popdarikromorigin[j][i] + " ");
 //        }
-//        System.out.println("");
+//        //aSystem.out.println("");
 //    }
 //    
 //    for (int i = 0; i < jmlpair*2; i++) {
 //        for (int j = 0; j < itungrow+1; j++) {
-//            System.out.print(anakkros[j][i]+" ");
+//            //aSystem.out.print(anakkros[j][i]+" ");
 //        }
-//        System.out.println("");
+//        //aSystem.out.println("");
 //    }
 //    
 //    for (int i = 0; i < itungrow+1; i++) {
-//        System.out.print(clnkromsa[i]+" ");
+//        //aSystem.out.print(clnkromsa[i]+" ");
 //    }
     
     //ngambil kromosom yg atas yg induk.
@@ -1862,7 +1870,7 @@ try {
 //        }   // TODO add your handling code here:indonesia.
     
     
-    //System.out.println("Pc = " + numPc + "\n" + "Pm = " + numPm);
+    ////aSystem.out.println("Pc = " + numPc + "\n" + "Pm = " + numPm);
     
     
     }//GEN-LAST:event_kerjakanActionPerformed
@@ -1974,7 +1982,7 @@ catch(Exception e) {
                     model1.setValueAt(content, row, column);
                     }
                 itungrow++;
-                System.out.println(itungrow);
+                //aSystem.out.println(itungrow);
             }
             tabel_mesin.setModel(model1);
             
@@ -2025,7 +2033,7 @@ catch(Exception e) {
         TableModel model4 = new DefaultTableModel(4,4);
         tabel_biaya.setModel(model4);
 }
-    System.out.println(itungrow);
+    //aSystem.out.println(itungrow);
     nmesin.setText(String.valueOf(itungrow));
     float jpm = 0;
     int q = 0;
@@ -2033,7 +2041,7 @@ catch(Exception e) {
         jpm += dimensi_mesin[q][0];
         q++;
     }
-    System.out.println("hasil akhir " + String.valueOf(jpm));
+    //aSystem.out.println("hasil akhir " + String.valueOf(jpm));
     
     float sigmaj = 0;
     int qq = 0;
@@ -2043,64 +2051,64 @@ catch(Exception e) {
         sigmaj += jarak_mesin[1+qq][1+qq];
         qq++;
     }
-         System.out.println("hasil sigmaj "+String.valueOf(sigmaj+dd));
+         //aSystem.out.println("hasil sigmaj "+String.valueOf(sigmaj+dd));
          
          rdk = sigmaj + dd + jpm;
-         System.out.println(laksyen);
+         //aSystem.out.println(laksyen);
     //Random rxkromosom = new Random();
     //int nkrom = rxkromosom.nextInt(itungrow - 1) + 1;
-    //System.out.println("angka keberuntungan:" + String.valueOf(nkrom));
+    ////aSystem.out.println("angka keberuntungan:" + String.valueOf(nkrom));
     for (int ng = 0; ng < 5; ng++) {
         Random xx = new Random();
         int separator = xx.nextInt(itungrow - 1) + 1;
-        System.out.print(": " + String.valueOf(separator) + " : ");
+        //aSystem.out.print(": " + String.valueOf(separator) + " : ");
         int[] testarray = new int[itungrow];
         
         for(int pa = 0; pa < testarray.length;pa++){
             testarray[pa] = pa + 1;
-            //System.out.print(testarray[pa]+" | ");
+            ////aSystem.out.print(testarray[pa]+" | ");
         }
         
         shuffleArray(testarray);
         double popo = (double) Math.round(testarray.length);
         double pepe = (double) Math.round(separator);
         double t = (double) Math.ceil((popo / pepe) );
-        System.out.println("hasil round " + String.valueOf(t));
+        //aSystem.out.println("hasil round " + String.valueOf(t));
         int m = (int) Math.round(t);
-        System.out.println("TEST " + String.valueOf(m));
+        //aSystem.out.println("TEST " + String.valueOf(m));
         int[][] krom = new int[separator][m];
         int b = 0;
         for(int x = 0; x < m;x++){
             for(int y = 0; y < separator; y++){
                 if(b < testarray.length){
                     krom[y][x] = testarray[b];
-                    //System.out.print(testarray[b] + "|");
-                    System.out.print(krom[y][x]+"|");
+                    ////aSystem.out.print(testarray[b] + "|");
+                    //aSystem.out.print(krom[y][x]+"|");
                     b++;
                 } else {
                     break;
                 }
              }
-             System.out.println("");
+             //aSystem.out.println("");
         }
         
         /*for(int ga = 0; ga < vv;ga++){
-            System.out.print(testarray[ga] + " | ");
+            //aSystem.out.print(testarray[ga] + " | ");
         }
         for(int ja = vv; ja < testarray.length;ja++){
-            System.out.print(testarray[ja] + ":");
+            //aSystem.out.print(testarray[ja] + ":");
         }*/
-        System.out.println("");
+        //aSystem.out.println("");
     }
     /*int[] testarray = new int[itungrow];
     for(int pa = 0; pa < testarray.length;pa++){
         testarray[pa] = pa + 1;
-        System.out.print(testarray[pa]+" | ");
+        //aSystem.out.print(testarray[pa]+" | ");
     }
-    System.out.println("");
+    //aSystem.out.println("");
     shuffleArray(testarray);
     for(int ja = 0; ja < testarray.length;ja++){
-        System.out.print(testarray[ja]+" | ");
+        //aSystem.out.print(testarray[ja]+" | ");
     }*/
     
 }
