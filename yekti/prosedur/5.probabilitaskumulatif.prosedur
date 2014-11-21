@@ -1,0 +1,67 @@
+//menentukan kromosom yang masuk ke proses ini
+//menentukan fitness kumulatif
+
+begin
+  arrayCopy(kromosom, index_elitism, kromosom.length-1, kromosom_probabilitas)
+  fitness_kumulatif = sum(fitness.kromosom_probabilitas)
+  for i = 0; i < kromosom_probabilitas; i++
+    pk = fitness/fitness_kumulatif
+    if(i == 0)
+      qk = pk[i]
+    else
+      qk = qk[i-1] + pk[i]
+    fi
+  end
+end
+
+//mencari calon induk crossover
+
+begin
+  for i = 0; i < kromosom_probabilitas; i++
+    bil_random = random(0 to 1)
+    for j = 0; j < kromosom_probabilitas; j++
+      if(bil_random < qk)
+        calon_induk[i] = kromosom_probabilitas[j]
+      fi
+    end
+  end
+end
+
+//mencari induk crossover
+
+begin
+  for i = 0; i < kromosom_probabilitas; i++
+    random_induk_crossover = random(0 to 1)
+    for j = 0; j < kromosom_probabilitas; j++
+      if(random_induk_crossover[i] < pc)
+        induk_crossover = kromosom_probabilitas[j]
+      fi
+    end
+  end
+end
+
+//mencari calon induk simulated annealing
+
+begin
+  for i = 0; i < kromosom_probabilitas; i++
+    bil_random = random(0 to 1)
+    for j = 0; j < kromosom_probabilitas; j++
+      if(bil_random < qk)
+        calon_induk_sa[i] = kromosom_probabilitas[j]
+      fi
+    end
+  end
+end
+
+//mencari induk simulated annealing
+
+begin
+  for i = 0; i < kromosom_probabilitas; i++
+    random_induk_crossover = random(0 to 1)
+    for j = 0; j < kromosom_probabilitas; j++
+      if(random_induk_crossover[i] < pm)
+        induk_sa = kromosom_probabilitas[j]
+      fi
+    end
+  end
+end

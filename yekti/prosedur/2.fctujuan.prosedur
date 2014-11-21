@@ -1,0 +1,45 @@
+//menghitung x axis dan y axis
+
+begin
+  for i = 0; i < kromosom; i++
+    for j = 0; j < jumlahmesin; j++
+      if([j % kromosom[0]] == 0)
+        x_axis[j] = jarak_mesin[kromosom[j+1]][0] + dimensi_mesin[kromosom[j+1]-1][0]/2 + neatclearance[j]
+        counter++
+      else
+        x_axis[j] = x_axis[j-1] + jarak_mesin[kromosom[j+1]-1][kromosom[j]-1] + neatclearance[j] + (dimensi_mesin[kromosom[j]-1][0] + dimensi_mesin[kromosom[j+1]-1][0])/2
+      fi
+      y_axis[j] = (counter-1)*jarak_baris
+    end
+  end
+end
+
+//menghitung jarak mesin baru
+
+begin
+  for i = 0; i < kromosom; i++
+    for j = 0; j < jumlahmesin; j++
+      for k = 0; k < jumlahmesin; k++
+        jarakmesinbaru[j][k] = | x_axis[j] - x_axis[k] | + | y_axis[j] - y_axis[k] |
+      end
+    end
+  end
+end
+
+//menghitung matrix fungsi tujuan
+
+begin
+  for i = 0; i < kromosom; i++
+    for j = 0; j < jumlahmesin; j++
+      for k = 0; k < jumlahmesin; k++
+        matrix_fungsi_tujuan[j][k] = jarakmesinbaru[j][k] * matrix_biaya[kromosom[j+1]-1][kromosom[k+1]-1] * matrix_frek[kromosom[j+1]-1][kromosom[k+1]-1]
+      end
+    end
+  end
+end
+
+//menghitung fungsi tujuan
+
+begin
+  fungsi_tujuan = sum(matrix_funsi_tujuan)/2
+end

@@ -1,0 +1,22 @@
+begin
+  for i = 0; i < jumlahkromosom; i++
+    kromosom[indexpertama] = {masukkan rumus separator}
+    listmesin = [1,..,n]; n=jumlahmesin
+    for a = 0; a < jumlahmesin; a++
+      listmesin[a] = a+1
+    end
+    shuffle(listmesin)
+    'l_aksen = l_aksen
+    for j = 0; j < jumlahmesin; j++
+      kromosom[j+1] = listmesin  //karena dalam deret mesin index pertama adalah separator
+      neatclearance[j] = random(0 to 'l_aksen)
+      if(counter < kromosom[0]) //counter menghitung perpindahan baris
+        'l_aksen = 'l_aksen - neatclearance[j]
+      else
+        'l_aksen = l_aksen
+        counter = 0
+      fi
+      counter++
+    end
+  end
+end

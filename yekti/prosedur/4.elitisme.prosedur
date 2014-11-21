@@ -1,0 +1,16 @@
+//menentukan fitness terbesar
+
+begin
+  for i = 0; i < kromosom; i++
+    if(fitness_max < fitness)
+      fitness_max = fitness
+      index_elitism = i
+    end
+  end
+end
+
+//menentukan kromosom yang terpilih di proses elitism
+
+begin
+  kromosom_elitism = kromosom.index_elitism
+end

@@ -1,0 +1,23 @@
+//menghitung lamda
+
+begin
+  for i = 0; i < kromosom; i++
+    for j = 0; j < jumlahmesin; j++
+      if([j+1 % separator] == 0)
+        L_baris = x_axis[j] + dimensi_mesin[kromosom[j+1]-1]/2 + jarak_mesin[kromosom[j+1]-1][jumlahmesin+1]
+        if(l_max < L_baris)
+          l_max = L_baris
+        fi
+      fi
+    end
+    lamda = l_max - lebar_ruang
+  end
+end
+
+//menghitung fitness
+
+begin
+  for i = 0; i < kromosom; i++
+    fitness = fungsi_tujuan + (lamda * P)
+  end
+end
