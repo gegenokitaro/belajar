@@ -5,10 +5,18 @@
 package gasa;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.lang.reflect.Array;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JFileChooser;
@@ -132,9 +140,9 @@ public class Gui_GASA extends javax.swing.JFrame {
 
         jLabel8.setText("Max. Generasi      :");
 
-        jLabel9.setText("Pc                         :");
+        jLabel9.setText("Pc");
 
-        jLabel10.setText("Pm                        :");
+        jLabel10.setText("Psa");
 
         jLabel11.setText("r                           :");
 
@@ -302,9 +310,7 @@ public class Gui_GASA extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(kerjakan)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(kerjakan)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(search_data)
                                 .addGap(26, 26, 26)
@@ -438,6 +444,13 @@ try {
 //        //aSystem.out.print(" "+kk[i]+" ");
 //    }
     //aSystem.out.println("");
+    
+    Date date = new Date();
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+    
+    PrintStream cetak = new PrintStream(new FileOutputStream("Hasil.txt"));
+    PrintWriter out = new PrintWriter("Hasil"+dateFormat.format(date)+".txt");
+    
     int pop = Integer.valueOf(pop_size.getText());
     float[] kecarray = new float[pop];
     int[][] kromorigin = new int[itungrow+1][pop]; //itungrow itu adalah mesin mesinnya, kalo pop itu index kromosomnya.
@@ -450,20 +463,20 @@ try {
     String iterasike = "";
     String kromosomawal = "";
     
-    for (int i = 0; i < pop; i++) {
-        int btssprtr = itungrow-2;
-        int sprtr = (int) (Math.random()*btssprtr+2);
-        kromorigin[0][i] = sprtr;
-        double atas = (double) itungrow;
-        double bawah = (double) sprtr;
-        double hasil = atas / bawah;
-        int pbltn = (int) Math.ceil(hasil);
-        int[] testarray = new int[itungrow];
-        for (int j = 0; j < testarray.length; j++) { // proses ini memasukkan nomer mesin ke dalam kromosom
-            testarray[j] = j + 1;
-        }
-        shuffleArray(testarray); // menshuffle urutan nomer mesin dalam kromosom
-    }
+//    for (int i = 0; i < pop; i++) {
+//        int btssprtr = itungrow-2;
+//        int sprtr = (int) (Math.random()*btssprtr+2);
+//        kromorigin[0][i] = sprtr;
+//        double atas = (double) itungrow;
+//        double bawah = (double) sprtr;
+//        double hasil = atas / bawah;
+//        int pbltn = (int) Math.ceil(hasil);
+//        int[] testarray = new int[itungrow];
+//        for (int j = 0; j < testarray.length; j++) { // proses ini memasukkan nomer mesin ke dalam kromosom
+//            testarray[j] = j + 1;
+//        }
+//        shuffleArray(testarray); // menshuffle urutan nomer mesin dalam kromosom
+//    }
     
     for (int i = 0; i < pop; i++) {
         int btssprtr = itungrow-2;
@@ -1809,7 +1822,7 @@ try {
             "   Pop Size            \t = "+pop_size.getText()+"\r\n"+
             "   Max Generasi \t = "+max_gen.getText()+"\r\n"+
             "   Pc                  \t = "+Pc.getText()+"\r\n"+
-            "   Pm                  \t = "+Pm.getText()+"\r\n"+
+            "   Psa                 \t = "+Pm.getText()+"\r\n"+
             "   r                   \t = "+r.getText()+"\r\n"+
             "   p                   \t = "+p.getText()+"\r\n"+
             "   T0                  \t = "+T0.getText()+"\r\n"+
@@ -1817,6 +1830,8 @@ try {
             "   Alpha               \t = "+alpha.getText()+"\r\n";
     
     tampilanhasil = datainputan + "\r\nBerikut daftar kromosom awal\r\n \r\n" + kromosomawal + "\r\nBerikut daftar kromosom terpilih\r\n\r\n" + kromosom;
+    
+    out.println(tampilanhasil);
     
     output_hasil.setText(tampilanhasil);
     
@@ -1843,31 +1858,31 @@ try {
     //ngambil kromosom yg atas yg induk.
     //array yg kecil dijadikan batasan atas
     
-//        float popsize = Float.parseFloat(pop_size.getText());
-//        float pc =  Float.parseFloat(Pc.getText());
-//        int jum_mesin = tabel_mesin.getRowCount();
-//        float suhu_aw = Float.parseFloat(T0.getText());
-//        float suhu_ak = Float.parseFloat(Ta.getText());
-//        float alphaa = Float.parseFloat(alpha.getText());
-//        float jum_iterasi = Float.parseFloat(max_gen.getText()); 
-//        if (popsize <= 0 || pc <= 0 || jum_mesin <= 0 || suhu_aw <= 0 || suhu_ak <= 0 || alphaa <= 0 || jum_iterasi <= 0) {
-//            JOptionPane.showMessageDialog(this, " Inputan tidak boleh negatif atau nol !!!");
-//        }
-//        else if (popsize > 0 && popsize < 2) {
-//            JOptionPane.showMessageDialog(this, " Masukkan nilai pop_size minimal 2 !!!");
-//        }
-//        else if (pc >= 1) {              
-//            JOptionPane.showMessageDialog(this, " Masukkan nilai pc antara 0 - 1 !!!");
-//        }
-//        else if (jum_iterasi < 1) {
-//            JOptionPane.showMessageDialog(this, " Masukkan nilai max_iterasi minimal 1 !!!");
-//        }
-//        else if (suhu_aw <= suhu_ak) {
-//            JOptionPane.showMessageDialog(this, " Suhu awal harus lebih besar dari suhu akhir !!!");
-//        }
-//        else if (alphaa >= 1){
-//            JOptionPane.showMessageDialog(this, " Masukkan nilai alpha antara 0 - 1 !!!");
-//        }   // TODO add your handling code here:indonesia.
+        float popsize = Float.parseFloat(pop_size.getText());
+        float pc =  Float.parseFloat(Pc.getText());
+        int jum_mesin = tabel_mesin.getRowCount();
+        float suhu_aw = Float.parseFloat(T0.getText());
+        float suhu_ak = Float.parseFloat(Ta.getText());
+        float alphaa = Float.parseFloat(alpha.getText());
+        float jum_iterasi = Float.parseFloat(max_gen.getText()); 
+        if (popsize <= 0 || pc <= 0 || jum_mesin <= 0 || suhu_aw <= 0 || suhu_ak <= 0 || alphaa <= 0 || jum_iterasi <= 0) {
+            JOptionPane.showMessageDialog(this, " Inputan tidak boleh negatif atau nol !!!");
+        }
+        else if (popsize > 0 && popsize < 2) {
+            JOptionPane.showMessageDialog(this, " Masukkan nilai pop_size minimal 2 !!!");
+        }
+        else if (pc >= 1) {              
+            JOptionPane.showMessageDialog(this, " Masukkan nilai pc antara 0 - 1 !!!");
+        }
+        else if (jum_iterasi < 1) {
+            JOptionPane.showMessageDialog(this, " Masukkan nilai max_iterasi minimal 1 !!!");
+        }
+        else if (suhu_aw <= suhu_ak) {
+            JOptionPane.showMessageDialog(this, " Suhu awal harus lebih besar dari suhu akhir !!!");
+        }
+        else if (alphaa >= 1){
+            JOptionPane.showMessageDialog(this, " Masukkan nilai alpha antara 0 - 1 !!!");
+        }   // TODO add your handling code here:indonesia.
     
     
     ////aSystem.out.println("Pc = " + numPc + "\n" + "Pm = " + numPm);
