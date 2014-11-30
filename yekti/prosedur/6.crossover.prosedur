@@ -1,0 +1,97 @@
+//proses crossover
+
+//menentukan jumlah kromosom yang dijadikan induk
+
+begin
+  jumlah_induk_crossover = induk_crossover.length
+  if(induk_crossover.length % 2 != 0)
+    jumlah_induk_crossover = jumlah_induk_crossover - 1
+  fi
+end
+
+//menentukan pasangan induk kromosom
+
+begin
+  jumlah_pasangan = jumlah_induk_crossover / 2
+  for i=0; i<jumlah_pasangan; i++
+    pasangan[i][0] = induk_crossover[i+counter]
+    counter++
+    pasangan[i][1] = induk_crossover[i+counter]
+  end
+end
+
+//menentukan separator baru
+
+begin
+  for i=0; i<jumlah_pasangan; i++
+    batas_1 = induk_crossover[pasangan[i][0]][0]
+    batas_2 = induk_crossover[pasangan[i][1]][0]
+    separator_baru[i] = math.random(batas_1 batas_2)
+  end
+end
+
+//menentukan random 2 bilangan batas untuk menentukan urutan mesin
+
+begin
+  for i=0; i<jumlah_induk_crossover; i++
+    bil1 = Math.random(jumlah_mesin-1)+1
+    bil2 = Math.random(jumlah_mesin-1)+1
+    if(bil1 < bil2)
+      urutan_baru[i][0] = bil1
+      urutan_baru[i][1] = bil2
+    else
+      urutan_baru[i][0] = bil2
+      urutan_baru[i][1] = bil1
+    fi
+  end
+end
+
+//menentukan urutan dari kromosom anak crossover
+
+begin
+  for i=0; i<jumlah_pasangan; i++
+    anak_cross[i][0] = separator_baru[i]
+    idx_satu = urutan_baru[i+baris][0]
+    idx_dua = urutan_baru[i+baris][1]
+    pindahan = idx_satu - idx_dua
+    for j=0; j<jumlah_mesin; j++
+      induk_kedua[i][j] = String.valueOf(kromosom[pasangan[i][1]][j+1])
+    end
+    for j=0; j<pindahan; j++
+      anak_cross[i+baris][idx_satu] = induk_crossover[i+baris][idx_satu+i]
+      List<String> list = new ArrayList<String>(Arrays.asList(induk_kedua))
+      list.remove(String.valueOf(kromosom[pasangan[i][1]][j+idx_satu]))
+      induk_kedua = list.toArray(new String[0])
+    end
+    for j=0; j<jumlah_mesin; j++
+      if(j < idx_satu-1)
+        anak_cross[i][j+1] = induk_kedua[counter]
+        counter++
+      fi
+      if(j > idx_dua-1)
+        anak_cross[i][j+1] = induk_kedua[counter]
+        counter++
+      fi
+    end
+    baris++
+    -- for v2, do the same
+  end
+end
+
+//menentukan neatclearance
+
+begin
+  for i=0; i<jumlah_pasangan; i++
+    rand_one_v1 = Math.random()*1
+    rand_two_v1 = 1 - rand_one_v1
+    rand_one_v2 = Math.random()*1
+    rand_two_v2 = 1 - rand_one_v2
+    for j=0; j<jumlah_mesin; j++
+      anak_cross_neatcl[i+baris][j] = neatcl[i+baris][pasangan[i][0]]*rand_one_v1 + neatcl[i+baris][pasangan[i][1]]*rand_two_v1
+    end
+    baris++
+    for j=0; j<jumlah_mesin; j++
+      anak_cross_neatcl[i+baris][j] = neatcl[i+baris][pasangan[i][1]]*rand_one_v2 + neatcl[i+baris][pasangan[i][0]]*rand_two_v2
+    end
+  end
+end

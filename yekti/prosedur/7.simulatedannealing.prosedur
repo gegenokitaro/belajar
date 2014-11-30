@@ -1,0 +1,48 @@
+//menentukan anak sa
+
+begin
+  lokasi = (int) Math.random()*jumlah_mesin-1
+  neat_terpilih = neatcl[index_sa][lokasi] / r
+  for i=0; i<2*r; i++
+    counter++
+    for j=0; j<jumlah_mesin; i++
+      anak_sa[i][j] = induk_sa[j]
+      neat_sa[i][j] = neatcl[index_sa][j]
+    end
+    neat_sa[i][lokasi] = counter * neat_terpilih
+  end
+end
+
+//menentukan fungsi tujuan
+
+begin
+  for i=0; i<2*r; i++
+    fungsi_tujuan_sa = fungsi_tujuan(anak_sa, neat_sa)
+  end
+end
+
+//menentukan fitness
+
+begin
+  perulangan_suhu = ((suhu_awal - suhu_akhir)/suhu_awal)/alpha
+  for x=0; x<perulangan_suhu; x++
+  for i=0; i<2*r; i++
+    fitness_sa = fitness(fungsi_tujuan_sa)
+    if(fitness_sa_max < fitness_sa)
+      fitness_sa_max = fitness_sa
+      index_max = i
+    fi
+  end
+  if(fitness(induk_sa) > fitness_sa_max)
+    P = exp(-|fungsi_tujuan_sa - fungsi_tujuan[index_sa]|/x*alpha*suhu_awal)
+    random_sa = Math.random()*1
+    if(P > random_sa)
+      induk_terpilih = (induk_sa.neatcl[index_sa])
+    else
+       induk_terpilih = (induk_sa.neatcl[index_sa])
+    fi
+  else
+    induk_terpilih = (anak_sa.neat_sa[index_max])
+  fi
+  end
+end
