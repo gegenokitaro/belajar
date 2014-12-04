@@ -8,11 +8,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,9 +22,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import jxl.Sheet;
 import jxl.Workbook;
-import org.fusesource.jansi.AnsiConsole;
-import static org.fusesource.jansi.Ansi.*;
-import static org.fusesource.jansi.Ansi.Color.*;
 
 /**
  *
@@ -445,11 +439,11 @@ try {
 //    }
     //aSystem.out.println("");
     
-    Date date = new Date();
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
-    
-    PrintStream cetak = new PrintStream(new FileOutputStream("Hasil.txt"));
-    PrintWriter out = new PrintWriter("Hasil"+dateFormat.format(date)+".txt");
+//    Date date = new Date();
+//    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+//    
+//    PrintStream cetak = new PrintStream(new FileOutputStream("Hasil.txt"));
+//    PrintWriter out = new PrintWriter("Hasil"+dateFormat.format(date)+".txt");
     
     int pop = Integer.valueOf(pop_size.getText());
     float[] kecarray = new float[pop];
@@ -462,6 +456,13 @@ try {
     String tampilanhasil = "";
     String iterasike = "";
     String kromosomawal = "";
+    String proses = "";
+    
+    int[] finalbestkromdex = new int[pop];
+    float[] finalbestfitdex = new float[pop];
+    int[][] finalbestkrom = new int[itungrow+1][pop];
+    float[][] finalbestneat = new float[itungrow][pop];
+    float[] finalbestfc = new float[pop];
     
 //    for (int i = 0; i < pop; i++) {
 //        int btssprtr = itungrow-2;
@@ -477,6 +478,8 @@ try {
 //        }
 //        shuffleArray(testarray); // menshuffle urutan nomer mesin dalam kromosom
 //    }
+    
+    DecimalFormat comma = new DecimalFormat("##.#");
     
     for (int i = 0; i < pop; i++) {
         int btssprtr = itungrow-2;
@@ -671,7 +674,7 @@ try {
             kromosomawal = kromosomawal+kromorigin[j][i]+"  ";
         }
         for (int j = 0; j < itungrow; j++) {
-            kromosomawal = kromosomawal+neatcl[j][i]+"  ";
+            kromosomawal = kromosomawal+Float.valueOf(comma.format(neatcl[j][i]))+"  ";
         }
         kromosomawal = kromosomawal+"    "+kecarray[i]+"/"+fitness[i];
         kromosomawal = kromosomawal+"\r\n";
@@ -699,6 +702,7 @@ try {
     float fitnessmax = 0;
     int idxfitmax = 0;
     String kromosomterpilih = "";
+    String finalkromosomterpilih = "";
     
     
     for (int i = 0; i < pop; i++) {
@@ -1801,14 +1805,43 @@ try {
                 kromosomterpilih = kromosomterpilih+bestkrom[j][i]+"  ";
             }
             for (int j = 0; j < itungrow; j++) {
-                kromosomterpilih = kromosomterpilih+bestneat[j][i]+"  ";
+                kromosomterpilih = kromosomterpilih+Float.valueOf(comma.format(bestneat[j][i]))+"  ";
             }
+            kromosomterpilih = kromosomterpilih+"    "+bestfc[i]+"/"+bestfitdex[i];
             kromosomterpilih = kromosomterpilih+"\r\n";
         }
         
-        kromosom = kromosomterpilih;
+        //proses pencarian jati diri
         
-        System.out.println(a+1);
+        finalbestkrom = bestkrom;
+        finalbestneat = bestneat;
+        finalbestfc = bestfc;
+        finalbestfitdex = bestfitdex;
+        
+        float finalfitmax = 0;
+        int dexchoosen = 0;
+        
+        for (int i = 0; i < finalbestfitdex.length; i++) {
+            if(finalbestfitdex[i] > finalfitmax){
+                finalfitmax = finalbestfitdex[i];
+                dexchoosen = i;
+            }
+        }
+        
+        finalkromosomterpilih = finalkromosomterpilih+"\r\nKromosom yang terpilih adalah\r\n";
+        for (int i = 0; i < itungrow+1; i++) {
+            finalkromosomterpilih = finalkromosomterpilih+finalbestkrom[i][dexchoosen]+"  ";
+        }
+        finalkromosomterpilih = finalkromosomterpilih+"  ";
+        for (int i = 0; i < itungrow; i++) {
+            finalkromosomterpilih = finalkromosomterpilih+Float.valueOf(comma.format(finalbestneat[i][dexchoosen]))+"  ";
+        }
+        finalkromosomterpilih = finalkromosomterpilih+"    "+finalbestfc[dexchoosen]+"/"+finalbestfitdex[dexchoosen];
+        
+        kromosom = kromosomterpilih+"\r\n"+finalkromosomterpilih;
+        proses = proses+(a+1)+"\r\n";
+        //aSystem.out.println(a+1);
+        output_proses.setText(proses);
     
     }
     
@@ -1831,11 +1864,39 @@ try {
     
     tampilanhasil = datainputan + "\r\nBerikut daftar kromosom awal\r\n \r\n" + kromosomawal + "\r\nBerikut daftar kromosom terpilih\r\n\r\n" + kromosom;
     
-    out.println(tampilanhasil);
+    JFileChooser chooser = new JFileChooser();
+    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    int result = chooser.showSaveDialog(this);
+    //aSystem.out.println(result);
+    String path = chooser.getSelectedFile().getAbsolutePath();
+    //aSystem.out.println(chooser.getSelectedFile().getAbsolutePath());
+    Date date = new Date();
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+//    PrintWriter simpan = new PrintWriter(path+"\\hasil"+dateFormat.format(date)+".txt");
+//    simpan.println(tampilanhasil);
+//    PrintWriter simpan = new PrintWriter(path+"Hasil"+dateFormat.format(date)+".txt");
+//    save.write(tampilanhasil);
+//    simpan.println(tampilanhasil);
+//    out.println(tampilanhasil);
+//    cetak.println(tampilanhasil);
     
     output_hasil.setText(tampilanhasil);
     
+    File test;
+    FileOutputStream fop = null;
     
+    test = new File(path+"\\output-"+dateFormat.format(date)+".txt");
+    fop = new FileOutputStream(test);
+    
+    if (!test.exists()) {
+        test.createNewFile();
+    }
+    
+    byte[] contentinbytes = tampilanhasil.getBytes();
+    
+    fop.write(contentinbytes);
+    fop.flush();
+    fop.close();
     
 //    for (int i = 0; i < indkrom.length; i++) {
 //        for (int j = 0; j < itungrow+1; j++) {
@@ -1865,7 +1926,7 @@ try {
         float suhu_ak = Float.parseFloat(Ta.getText());
         float alphaa = Float.parseFloat(alpha.getText());
         float jum_iterasi = Float.parseFloat(max_gen.getText()); 
-        if (popsize <= 0 || pc <= 0 || jum_mesin <= 0 || suhu_aw <= 0 || suhu_ak <= 0 || alphaa <= 0 || jum_iterasi <= 0) {
+        if (popsize <= 0 || pc <= 0 || jum_mesin <= 0 || suhu_aw <= 0 || alphaa <= 0 || jum_iterasi <= 0) {
             JOptionPane.showMessageDialog(this, " Inputan tidak boleh negatif atau nol !!!");
         }
         else if (popsize > 0 && popsize < 2) {
