@@ -1,0 +1,19 @@
+<div class="modal">
+    <ion-header-bar>
+        <h1 class="title">Cari Produk</h1>
+        <button ng-click="hideProduct(this)" class="button button-clear button-icon button-dark ion-ios-close-outline"></button>
+    </ion-header-bar>
+    <ion-content>
+        <form novalidate ng-submit="searchProductModal(this)">
+            <ion-list>
+                <div class="lolipop-input item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input focus-input type="text" ng-model="search.filter" placeholder="Cari produk ...">
+                    </label>
+                    <button type="submit" class="button button-primary icon ion-android-search"></button>
+                </div>
+                <item-product-chart ng-repeat="product in filtered"></item-product-chart>
+            </ion-list>
+        </form>
+    </ion-content>
+</div>

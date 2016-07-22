@@ -1,0 +1,20 @@
+<div ng-hide="payment.idCharge" class="item item-chart">
+    <div class="item-text price">
+        <h2>{{payment.partner}} : {{payment.docOrder}}</h2>
+        <p>{{payment.date| date}} <sp/>Tagihan Rp {{payment.total| number}} <sp/><span ng-hide="isRetur(payment.docOrder)">Kurang Rp {{payment.rest| number}}</span> <sp/><span class="assertive" ng-show="payment.amount > 0">Rp {{payment.rest - payment.amount |number}}</span></p>
+    </div>
+    <div class="item-button price">
+        <button tabindex="-1" ng-click="removeChart(this, payment)" class="button button-clear button-icon button-dark icon ion-trash-a"> </button>
+        <input ng-hide="isRetur(payment.docOrder)" type="tel" focus-input ng-change="calculateChart()" format="number" ng-model="payment.amount">
+    </div>
+</div>
+<div ng-show="payment.idCharge" class="item item-chart">
+    <div class="item-text price">
+        <h2>{{payment.charge}}</h2>
+        <p>{{payment.idCharge}}</p>
+    </div>
+    <div class="item-button price">
+        <button tabindex="-1" ng-click="removeChart(this, payment)" class="button button-clear button-icon button-dark icon ion-trash-a"> </button>
+        <input type="tel" focus-input ng-change="calculateChart()" format="number" ng-model="payment.total">
+    </div>
+</div>

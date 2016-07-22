@@ -1,0 +1,86 @@
+<ion-view view-title="Daftar Produk">
+    <ion-content>
+        <form novalidate ng-submit="searchProduct()">
+            <ion-list ng-hide="noFilter">
+                <label class="item item-input">
+                    <span class="input-label">Kode Produk</span>
+                    <input type="text" ng-model="filter.code">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Nama Produk</span>
+                    <input type="text" ng-model="filter.name">
+                </label>
+                <label class="item item-input item-select">
+                    <span class="input-label">Kategori</span>
+                    <select ng-model="filter.idCategory">
+                        <option value="">-- Pilih semua --</option>
+                        <option ng-repeat="row in categories" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <span class="input-label">Lokasi</span>
+                    <select ng-model="filter.idWarehouse">
+                        <option value="">-- Pilih semua --</option>
+                        <option ng-repeat="row in warehouses" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                </label>                                
+                <label class="item item-input item-select">
+                    <span class="input-label">Satuan</span>
+                    <select ng-model="filter.idUOM">
+                        <option value="">-- Pilih semua --</option>
+                        <option ng-repeat="row in uoms" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Jumlah Stok</span>
+                    <input type="text" ng-model="filter.qty">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Harga Beli</span>
+                    <input type="text" ng-model="filter.purchaseprice">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Harga Jual</span>
+                    <input type="text" ng-model="filter.salesprice">
+                </label>
+                <label class="item item-input item-select">
+                    <span class="input-label">Produk Stok</span>
+                    <select ng-model="filter.isStocked">
+                        <option value="">-- Pilih semua --</option>
+                        <option value="Y">Ya</option>
+                        <option value="N">Tidak</option>
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <span class="input-label">Produk Dijual</span>
+                    <select ng-model="filter.isSold">
+                        <option value="">-- Pilih semua --</option>
+                        <option value="Y">Ya</option>
+                        <option value="N">Tidak</option>
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <span class="input-label">Produk Dibeli</span>
+                    <select ng-model="filter.isPurchased">
+                        <option value="">-- Pilih semua --</option>
+                        <option value="Y">Ya</option>
+                        <option value="N">Tidak</option>
+                    </select>
+                </label>
+            </ion-list>
+            <div class="item-divider text-right has-buttons">
+                <a tab-index="-1" ng-click="noFilter = !noFilter" ng-class="noFilter ? 'ion-chevron-down' : 'ion-chevron-up'" class="button button-single button-light icon "> </a>
+                <a ng-show="isOwner() || isInventor()" ng-href="#/app/productform/create/0" class="button button-single button-dark icon ion-plus-round"> </a>
+                <button type="submit" class="button button-single button-primary icon ion-android-search"> </button>
+            </div>
+        </form>
+        <ion-list>
+            <item-product ng-repeat="product in products"></item-product>
+        </ion-list>
+        <ion-infinite-scroll
+            ng-if="hasMore()"
+            on-infinite="loadMore()"
+            distance="10%">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,14 @@
+<div ng-click="addChart(this, product)" class="item item-avatar item-product">
+    <img alt="" src="{{BASEPATH_IMG+product.image}}">
+    <div ng-show="product.qty !== undefined" class="item-text">
+        <h2>{{product.name}}</h2>
+        <p>Kode : {{product.code}}</p>
+        <p>Stok : {{product.qty | number}} {{product.unit}}<sp/> Lokasi : {{product.warehouse || '-'}}</p>
+        <p>Harga Jual : Rp {{product.salesprice | number}} <sp/><span ng-hide='hidePurchase'> Harga Beli : Rp {{product.purchaseprice | number}}</span>  </p>
+    </div>
+    <div ng-hide="product.qty !== undefined" class="item-text">
+        <h2>{{product.name}}</h2>
+        <p>Kode : {{product.code || '-'}}</p>
+        <p>{{product.desc}}</p>
+    </div>
+</div>

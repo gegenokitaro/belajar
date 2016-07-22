@@ -1,0 +1,37 @@
+<ion-view view-title="Riwayat Pembayaran">
+    <ion-content>
+        <div class="item item-divider">
+            <p>{{account.name}} : {{account.account}}</p>
+            <h1>Rp {{account.balanceStart + account.balanceFilter | number}}</h1>
+        </div>
+        <form novalidate ng-submit="searchPayment()">
+        <ion-list ng-hide="noFilter">
+            <label class="item item-input">
+                <span class="input-label">Saldo Awal</span>
+                <span>{{account.currency}} {{account.balanceStart | number}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label" >Tgl Dari</span>
+                <input ng-model="filter.dateFrom" type="date">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Tgl Sampai</span>
+                <input  ng-model="filter.dateTo" type="date">
+            </label>
+        </ion-list>
+        <div class="item-divider text-right has-buttons">
+            <a tab-index="-1" ng-click="noFilter = !noFilter" ng-class="noFilter ? 'ion-chevron-down' : 'ion-chevron-up'" class="button button-single button-light icon "> </a>
+            <a ng-click="goBack()" class="button button-single button-dark icon ion-close-round"> </a>
+            <button type="submit" class="button button-single button-primary icon ion-android-search"> </button>
+        </div>
+        </form>
+        <ion-list>
+            <item-payment-history ng-repeat="payment in account.details"></item-payment-history>
+        </ion-list>
+        <ion-infinite-scroll
+            ng-if="hasMore()"
+            on-infinite="loadMore()"
+            distance="10%">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

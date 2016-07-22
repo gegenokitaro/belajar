@@ -1,0 +1,9 @@
+<div class="modal">
+    <label class="item item-input item-select">
+        <span class="input-label">Akun</span>
+        <select ng-model="idBank">
+            <option ng-repeat="akun in accounts" value="{{ akun.id }}">{{ akun.name }}</option>
+        </select>
+    </label>
+    <a class="button button-single button-primary icon ion-checkmark-round" ng-click="hideTransBank(this)" href="#/app/paymentform/create/{{idBank}}/AR Receipt/{{trans.idPartner}}/{{trans.id}}"></a>
+</div>

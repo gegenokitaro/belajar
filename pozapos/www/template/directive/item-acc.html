@@ -1,0 +1,32 @@
+<div ng-show="acc.isHeader">
+    <div class="item item-chart">
+        <div class="item-text multiple">
+            <h2>{{acc.warehouse}} : {{acc.docRcp}}</h2>
+            <p>{{trans.date| date}} <sp/> <strong>{{acc.status}}</strong></p>
+        </div>
+        <div class="item-button multiple">
+            <a ng-show="acc.isForm" ng-click="createRMA(acc)" title="Simpan" class="button button-primary icon ion-checkmark-round"> </a>
+            <a ng-show="acc.isForm" ng-click="toggleRMA(acc, false)" title="Batal" class="button button-dark icon ion-close-round"> </a>
+            <a title="Voided" ng-show="isComplete(acc.status) && !acc.isSales && !acc.isForm" ng-click="cancelAcc(acc)" class="button button-primary icon ion-android-unlock"></a>
+            <a title="Retur" ng-show="isComplete(acc.status) && !acc.isForm && isRMA(acc)" ng-click="toggleRMA(acc, true)" class="button button-dark icon ion-share"></a>
+        </div>
+    </div>
+    <div class="item item-avatar item-chart">
+        <div class="item-text">
+            <h2>{{acc.name}}</h2>
+            <p>Jumlah : {{acc.amount| number}} <sp/>Retur : {{parseNumber(acc.rma) + parseNumber(acc.amountRma)|| 0|number}}</p>
+        </div>
+        <div ng-show="acc.isForm" class="item-button">
+            <input type="tel" focus-input ng-change="calculateRMA()" format="number" ng-model="acc.amountRma">
+        </div>
+    </div>
+</div>
+<div ng-hide="acc.isHeader" class="item item-avatar item-chart">
+    <div class="item-text">
+        <h2>{{acc.name}}</h2>
+        <p>Jumlah : {{acc.amount| number}} <sp/>Retur : {{parseNumber(acc.rma) + parseNumber(acc.amountRma)|| 0 |number}}</p>
+    </div>
+    <div ng-show="acc.isForm" class="item-button">
+        <input type="tel" focus-input ng-change="calculateRMA()" format="number" ng-model="acc.amountRma">
+    </div>
+</div>

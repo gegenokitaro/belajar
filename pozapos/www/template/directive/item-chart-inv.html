@@ -1,0 +1,11 @@
+<div class="item item-avatar item-chart">
+    <img alt="" src="{{BASEPATH_IMG+product.image}}">
+    <div class="item-text">
+        <h2>{{product.name}}</h2>
+        <p><span ng-show="product.qty">Stok : {{product.qty}} </span><sp/>Kode : {{product.code || '-'}}</p>
+    </div>
+    <div class="item-button">
+        <button tabindex="-1" ng-click="removeChart(this,product)" class="button button-clear button-icon button-dark icon ion-trash-a"> </button>
+        <input type="tel" focus-input ng-change="calculateChart()" format="number" ng-model="product.amount">
+    </div>
+</div>

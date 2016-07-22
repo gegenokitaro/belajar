@@ -1,0 +1,91 @@
+<ion-view view-title="{{title}}">
+    <ion-content>
+        <form novalidate name='invForm' ng-submit="submitInventory(invForm)">
+            <ion-list ng-hide="noFilter">
+                <label ng-hide="search.isForm" class="item item-input">
+                    <span class="input-label">Lokasi</span>
+                    <span>{{trans.warehouse}}</span>
+                </label>
+                <label ng-show="search.isForm" class="item item-input item-select">
+                    <span class="input-label">Lokasi</span>
+                    <select ng-model="trans.idWarehouse" required>
+                        <option ng-repeat="row in warehouses" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Tgl</span>
+                    <input type="date" ng-show="search.isForm" ng-model="trans.date" required>
+                    <span ng-hide="search.isForm">{{trans.date|date}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Nomor</span>
+                    <input type="text" ng-show="search.isForm" ng-model="trans.code">
+                    <span ng-hide="search.isForm">{{trans.code}}</span>
+                </label>
+                <label ng-hide="params.act === CREATE" class="item item-input">
+                    <span class="input-label">Jenis Transaksi</span>
+                    <span>{{trans.type}}</span>
+                </label>
+                <label ng-show="params.act === CREATE" class="item item-input item-select">
+                    <span class="input-label">Jenis Transaksi</span>
+                    <select ng-change="typeChange()" ng-model="trans.type" required>
+                        <option ng-repeat="row in types" value="{{row.name}}">{{row.name}}</option>
+                    </select>
+                </label>
+                <label ng-hide="search.isForm || !(isStockIn(trans.type) || isStockOut(trans.type))" class="item item-input">
+                    <span class="input-label">Biaya</span>
+                    <span>{{trans.charge}}</span>
+                </label>                
+                <label ng-show="search.isForm && (isStockIn(trans.type) || isStockOut(trans.type))" class="item item-input item-select">
+                    <span class="input-label">Biaya</span>
+                    <select ng-model="trans.idCharge">
+                        <option ng-repeat="row in charges" value="{{row.idCharge}}">{{row.charge}}</option>
+                    </select>
+                </label>
+                <label ng-hide="search.isForm || !isMovement(trans.type)" class="item item-input">
+                    <span class="input-label">Lokasi Terima</span>
+                    <span>{{trans.location}}</span>
+                </label>
+                <label ng-show="search.isForm && isMovement(trans.type)" class="item item-input item-select">
+                    <span class="input-label">Lokasi Terima</span>
+                    <select ng-model="trans.idLocation">
+                        <option ng-repeat="row in locations" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Catatan</span>
+                    <textarea rows="5" type="text" ng-show="search.isForm" ng-model="trans.desc"></textarea>
+                    <span ng-hide="search.isForm">{{trans.desc}}</span>
+                </label>
+                <label ng-hide="search.isForm" class="item item-input">
+                    <span class="input-label">Status</span>
+                    <span>{{trans.status}}</span>
+                </label>
+            </ion-list>
+            <div class="item-divider text-right has-buttons">
+                <a tab-index="-1" ng-click="noFilter = !noFilter" ng-class="noFilter ? 'ion-chevron-down' : 'ion-chevron-up'" class="button button-single button-light icon "> </a>
+                <a ng-show="params.act === CREATE" title="Reset" ng-click="initWs()" class="button button-single button-dark icon ion-refresh"> </a>
+                <a ng-show="search.isForm && isDraft(trans.status) && isOpname(trans.type)" ng-click="generateOpname(trans)" class="button button-single button-light icon ion-loop"> </a>
+                <a ng-hide="(search.isForm || params.act === CREATE) || !isDraft(trans.status)" ng-click="toggleForm(this, true)" class="button button-single button-light icon ion-edit"> </a>
+                <a ng-hide="params.act === CREATE || !isDraft(trans.status)" ng-click="deleteInventory(trans)" class="button button-single button-light icon ion-trash-a"> </a>
+                <a ng-show="params.act !== CREATE && isComplete(trans.status)" ng-click="cancelInventory(trans)" class="button button-single button-light icon ion-android-unlock"> </a>
+                <a ng-show="!(search.isForm && isDraft(trans.status)) && params.act !== CREATE" ng-click="goBack()" class="button button-single button-dark icon ion-close-round"> </a>
+                <a ng-show="search.isForm && params.act !== CREATE && isDraft(trans.status)" ng-click="toggleForm(this, false)" class="button button-single button-dark icon ion-close-round"> </a>
+                <button ng-show="search.isForm || params.act === CREATE" type="submit" class="button button-single button-primary icon ion-checkmark-round"> </button>
+                <a ng-show="!search.isForm && isDraft(trans.status)" ng-click="completeInventory(trans)" class="button button-single button-primary icon ion-android-lock"> </a>
+            </div>
+        </form>
+        <div ng-show="search.isForm && (params.act !== CREATE || !isOpname(trans.type))">
+            <input-search-pos></input-search-pos>
+            <ion-list>
+                <item-product-chart ng-repeat="product in result"></item-product-chart>
+            </ion-list>
+        </div>
+        <ion-list ng-hide="search.isForm"  class="chart-list">
+            <item-detail-inv ng-repeat="product in trans.details"></item-detail-inv>
+        </ion-list>
+        <ion-list ng-show="search.isForm"  class="chart-list">
+            <item-chart-inv ng-repeat="product in trans.details"></item-chart-inv>
+        </ion-list>
+    </ion-content>
+</ion-view>

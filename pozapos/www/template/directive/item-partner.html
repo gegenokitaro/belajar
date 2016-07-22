@@ -1,0 +1,8 @@
+<a ng-href="#/app/partnerform/view/{{partner.id}}" class="item">
+    <div class="item-text">
+        <h2>{{partner.name}}</h2>
+        <p>{{partner.bpGroup}} - {{partner.code}}</p>
+        <p ng-show="{{partner.loan > 0}}">{{isVendor(partner.bpGroup) ? 'Hutang' : 'Piutang'}} <strong>Rp {{partner.loan | number}}</strong></p>
+        <p>{{partner.address}} {{partner.city}}</p>
+    </div>
+</a>

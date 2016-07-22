@@ -1,0 +1,117 @@
+<ion-view view-title="{{title}}">
+    <ion-content>
+        <form novalidate name="transForm" ng-submit="submitTrans(transForm)">
+            <ion-list ng-hide="noFilter">
+                <label ng-hide="search.isForm" class="item item-input">
+                    <span class="input-label">{{partnerlabel}}</span>
+                    <span >{{trans.partner}}</span>
+                </label>
+                <div ng-show="search.isForm" class="item item-input">
+                    <span class="input-label">{{partnerlabel}}</span>
+                    <div class="partner-list-wrapper">
+                        <div class="item-button-right">
+                            <input ng-click="clearPartner(this)" class="force-input" type="text" ng-show="trans.idPartner" ng-model="trans.partner" readonly>
+                            <input ng-hide="trans.idPartner" class="force-input" type="text" ng-model="search.filterPartner" ng-change="searchPartnerOff(this)" placeholder="Cari {{partnerlabel}} ...">
+                            <a tabindex="-1" ng-href="#/app/partnerform/create/{{params.type}}" class="button button-primary button-circle icon ion-plus-round"></a>
+                        </div>
+                        <ion-list class='partner-list'>
+                            <item-partner-chart ng-repeat="partner in search.resultPartner"></item-partner-chart>
+                        </ion-list>
+                    </div>
+                </div>
+                <label class="item item-input">
+                    <span class="input-label">Nomor</span>
+                    <input type="text" ng-show="params.act === CREATE" ng-model="trans.code">
+                    <span ng-hide="params.act === CREATE">{{trans.code}}</span>
+                </label>
+                <label ng-show="search.isForm" class="item item-input">
+                    <span class="input-label">Tgl</span>
+                    <input ng-readonly="search.isDate" type="date" ng-model="trans.date" required>
+                </label>
+                <label ng-hide="search.isForm" class="item item-input">
+                    <span class="input-label">Tgl</span>
+                    <span >{{trans.date|date}}</span>
+                </label>
+                <label ng-show="params.act !== CREATE" class="item item-input">
+                    <span class="input-label">Lokasi</span>
+                    <span>{{trans.warehouse}}</span>
+                </label>
+                <label ng-show="params.act === CREATE" class="item  item-input item-select">
+                    <span class="input-label">Lokasi</span>
+                    <select readonly>
+                        <option >{{user.warehouse}}</option>
+                    </select>
+                </label>
+                <label ng-hide="search.isForm" class="item  item-input">
+                    <span class="input-label">Pajak</span>
+                    <span>{{trans.tax.name + " " + trans.tax.rate + "%"}}</span>
+                </label>
+                <label ng-show="search.isForm" class="item item-input item-select">
+                    <div class="input-label">
+                        Pajak
+                    </div>
+                    <select ng-change="changeTax(this)" ng-model="trans.idTax">
+                        <option ng-repeat="tax in taxes" value="{{tax.id}}" >{{tax.name + " " + tax.rate + "%"}}</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Catatan</span>
+                    <textarea rows="5" type="text" ng-show="search.isForm" ng-model="trans.desc"></textarea>
+                    <p class="no-wrap" ng-hide="search.isForm">{{trans.desc}}</p>
+                </label>
+                <div class="item item-divider"></div>
+                <label class="item item-input">
+                    <span class="input-label">Subtotal</span>
+                    <span><strong>{{trans.total| number}}</strong></span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Pajak</span>
+                    <span><strong>{{trans.tax.rate * trans.total / 100| number}}</strong></span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Total</span>
+                    <span><strong>{{trans.tax.rate * trans.total / 100 + trans.total| number}}</strong></span>
+                </label>
+                <label ng-hide="search.isForm" class="item item-input">
+                    <span class="input-label">Dibayar</span>
+                    <span><strong>{{trans.totalPaid| number}}</strong></span>
+                </label>
+                <label ng-hide="search.isForm" class="item item-input">
+                    <span class="input-label">Status</span>
+                    <span ><strong>{{trans.statusPaid}}</strong></span>
+                </label>
+            </ion-list>
+            <div class="item-divider has-buttons text-right">
+                <a class="button button-single button-light icon ion-plus-round" ng-click="showTransBank(this)" ></a>
+                <a tab-index="-1" ng-click="noFilter = !noFilter" ng-class="noFilter ? 'ion-chevron-down' : 'ion-chevron-up'" class="button button-single button-light icon "> </a>
+                <a ng-show="!search.idForm && isComplete(trans.status)" title="Cetak" ng-click="printReceipt(this, trans)" class="button button-single button-light icon ion-android-print"> </a>
+                <a ng-hide="(search.isForm || params.act === CREATE) || !isDraft(trans.status)" title="Rubah" ng-click="toggleForm(this, true)" class="button button-single button-light icon ion-edit"> </a>
+                <a ng-hide="(search.isAcc || search.isForm || params.act === CREATE || trans.isSales || noAcc) || !isComplete(trans.status)" title="Penerimaan" ng-click="toggleAcc(this, true)" class="button button-single button-light icon ion-archive"> </a>
+                <a ng-show="params.act !== CREATE && isComplete(trans.status) && trans.accs.length > 0 && !search.isAcc" title="Daftar Penerimaan" ng-click="showAcc(this)" class="button button-single button-light icon ion-clipboard"> </a>
+                <a ng-show="params.act !== CREATE && isComplete(trans.status) && !search.isAcc" title="Voided" ng-click="cancelTrans(trans)" class="button button-single button-light icon ion-android-unlock"> </a>
+                <a ng-show="params.act !== CREATE && isDraft(trans.status)" title="Hapus" ng-click="deleteTrans(trans)" class="button button-single button-light icon ion-trash-a"> </a>
+                <a ng-show="params.act === CREATE" title="Reset" ng-click="initWs()" class="button button-single button-dark icon ion-refresh"> </a>
+                <a ng-show="!(search.isForm && isDraft(trans.status)) && !search.isAcc && params.act !== CREATE" title="Kembali" ng-click="goBack()" class="button button-single button-dark icon ion-close-round"> </a>
+                <a ng-show="search.isForm && params.act !== CREATE && isDraft(trans.status)" title="Batal" ng-click="toggleForm(this, false)" class="button button-single button-dark icon  ion-close-round"> </a>
+                <a ng-show="search.isAcc && params.act !== CREATE && isComplete(trans.status)" title="Batal" ng-click="search.isAcc = false" class="button button-single button-dark icon  ion-close-round"> </a>
+                <a ng-show="!search.isForm && isDraft(trans.status)" title="Complete" ng-click="completeTrans(trans)" class="button button-single button-primary icon ion-android-lock"> </a>
+                <button ng-show="search.isForm || search.isAcc || params.act === CREATE" title="Simpan" type="submit" class="button button-single button-primary icon ion-checkmark-round"> </button>
+            </div>
+        </form>
+        <div ng-show="search.isForm">
+            <input-search-pos></input-search-pos>
+            <ion-list>
+                <item-product-chart ng-repeat="product in result"></item-product-chart>
+            </ion-list>
+        </div>
+        <ion-list ng-hide="search.isForm || search.isAcc"  class="chart-list">
+            <item-detail ng-repeat="product in trans.details"></item-detail>
+        </ion-list>
+        <ion-list ng-show="search.isForm"  class="chart-list">
+            <item-chart ng-repeat="product in trans.details"></item-chart>
+        </ion-list>
+        <ion-list ng-show="search.isAcc"  class="chart-list">
+            <item-chart-acc ng-repeat="product in trans.details"></item-chart-acc>
+        </ion-list>
+    </ion-content>
+</ion-view>

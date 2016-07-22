@@ -1,0 +1,73 @@
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content>
+        <ion-nav-bar class="primary-bg light has-highlight">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-dark ion-navicon" menu-toggle="left"></button>
+                <img class="logo-text" alt="logo" src="img/icon-text.png">
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <img class="logo-slogan" alt="logo" src="img/icon-slogan.png">
+                <button ng-show="useSearch" ng-click="searchNav()" class="button button-icon button-dark ion-android-search" ></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left" class="side-bg">
+        <ion-content>
+            <ion-list>
+                <ion-item nav-clear menu-close class="app-title">
+                    <img alt="logo" class="logo" src="img/icon.png"/>
+                    <p class="text-right">
+                        <a ng-click="setMenu(0)" href="#/app/setting">{{user.user}}</a>
+                        <br/>
+                        <small>{{user.warehouse}}</small><br/>
+                        <small><italic>{{user.rolename}}</italic></small>
+                    </p>
+                </ion-item>
+                <ion-item ng-show="isOwner() || isOperator()" ng-click="setMenu(1)" ng-class="activeMenu == 1 ? 'selected' : 0" nav-clear menu-close href="#/app/pos" class="item-icon-left" tabindex="-1">
+                    <i class="icon icon-c icon-c-chart"></i>
+                    POS
+                </ion-item>
+                <ion-item ng-show="isOwner() || isOperator()" ng-click="setMenu(2)" ng-class="activeMenu == 2 ? 'selected' : 0" nav-clear menu-close href="#/app/transform/sales/create/0" class="item-icon-left" tabindex="-1">
+                    <i class="icon icon-c icon-c-sales"></i>
+                    Penjualan
+                </ion-item>
+                <ion-item ng-show="isOwner() || isInventor()" ng-click="setMenu(3)" ng-class="activeMenu == 3 ? 'selected' : 0" nav-clear menu-close href="#/app/transform/purchase/create/0" class="item-icon-left" tabindex="-1">
+                    <i class="icon icon-c icon-c-purchase"></i>
+                    Pembelian
+                </ion-item>
+                <ion-item ng-show="isOwner() || isOperator()"  ng-click="setMenu(4)" ng-class="activeMenu == 4 ? 'selected' : 0" nav-clear menu-close href="#/app/payment" class="item-icon-left" tabindex="-1">
+                    <i class="icon icon-c icon-c-payment"></i>
+                    Pembayaran
+                </ion-item>
+                <ion-item ng-show="isOwner() || isInventor()" ng-click="setMenu(5)" ng-class="activeMenu == 5 ? 'selected' : 0" nav-clear menu-close href="#/app/inventoryform/create/0" class="item-icon-left" tabindex="-1">
+                    <i class="icon icon-c icon-c-inventory"></i>
+                    Inventory
+                </ion-item>
+                <ion-item ng-click="setMenu(6)" ng-class="activeMenu == 6 ? 'selected' : 0" nav-clear menu-close href="#/app/product" class="item-icon-left" tabindex="-1">
+                    <i class="icon icon-c icon-c-product"></i>
+                    Produk
+                </ion-item>
+                <ion-item ng-click="setMenu(7)" ng-class="activeMenu == 7 ? 'selected' : 0" nav-clear menu-close href="#/app/partner" class="item-icon-left" tabindex="-1">
+                    <i class="icon icon-c icon-c-partner"></i>
+                    Partner
+                </ion-item>
+                <ion-item ng-click="logout()" ng-href="#" class="item-icon-left" nav-clear menu-close  tabindex="-1">
+                    <i class="icon icon-c icon-c-exit"></i>
+                    Keluar
+                </ion-item>
+                <ion-item nav-clear menu-close class="top-50 no-border">
+                    <p class="text-center light ">
+                        {{CONFIG.APP_NAME}}<br/>
+                        Point of Sale Apps<br/>
+                        <small>v.{{CONFIG.APP_VERSION}} <br/> {{SERVERNAME}}</small>
+                    </p>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

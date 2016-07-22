@@ -1,0 +1,26 @@
+<div class="item item-avatar item-chart">
+    <img alt="" src="{{BASEPATH_IMG+product.image}}">
+    <div ng-show="!showPrice" ng-click="togglePrice(this,product)" class="item-text">
+        <h2>{{product.name}}</h2>
+        <p>
+            {{product.amount | number}} {{product.unit}} x Rp {{product.price | number}} 
+            <span ng-hide="product.tax && product.rate > 0">= Rp {{product.amount * product.price| number}}</span>
+            <span ng-show="product.tax && product.rate > 0" class="assertive"> 
+                + Rp {{product.amount * product.price * product.rate / 100| number}} ({{product.tax}} {{product.rate}}%) 
+                = Rp {{(product.amount * product.price * product.rate / 100 + product.amount * product.price)| number}}
+            </span>
+        </p>
+    </div>
+    <div ng-show="!showPrice" class="item-button">
+        <button tabindex="-1" ng-click="removeChart(this,product)" class="button button-clear button-icon button-dark icon ion-trash-a"> </button>
+        <input type="tel" focus-input ng-change="calculateChart()" format="number" ng-model="product.amount">
+    </div>
+    <div ng-show="showPrice" class="item-text price">
+        <p>Harga</p>
+        <h2>{{product.name}}</h2>
+    </div>
+    <div ng-show="showPrice" class="item-button price" >
+        <button tabindex="-1" ng-click="changePrice(this, product)" class="button button-clear button-icon button-dark icon ion-checkmark-round"> </button>
+        <input type="tel" focus-input ng-change="calculateChart()" format="number" ng-model="product.tmpPrice">
+    </div>
+</div>

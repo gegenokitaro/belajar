@@ -1,0 +1,15 @@
+<a ng-href="#/app/transform/{{trans.isSales ? SALES : PURCHASE}}/view/{{trans.id}}" class="item">
+    <h2>{{trans.partner}} : {{trans.code}}</h2>
+    <div ng-hide="product" >
+        <p>{{trans.isSales ? 'Penjualan' : 'Pembelian'}} <strong>{{trans.status}}</strong></p>
+        <p>{{trans.date| date}} <sp/> Rp {{trans.total| number}} <sp/><strong>{{trans.statusPaid}}</strong></p>
+    </div>
+    <div ng-show="product" >
+        <p>{{trans.isSales ? 'Penjualan' : 'Pembelian'}} <strong>{{trans.status}}</strong> <sp/>{{trans.date| date}}  <sp/><strong>{{trans.statusPaid}}</strong></p>
+        <p>
+            Rp {{trans.total| number}} <sp/>Jml : {{trans.qty | number}} {{product.unit}} <sp/>
+            <span ng-show="trans.isSales">Retur : {{trans.retur | number}} {{product.unit}}</span>
+            <span ng-hide="trans.isSales">Terima : {{trans.acc | number}} {{product.unit}} <sp/>Retur : {{trans.retur | number}} {{product.unit}}</span>
+        </p>
+    </div>
+</a>

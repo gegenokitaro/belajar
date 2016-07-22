@@ -1,0 +1,6 @@
+#!/bin/bash
+# upload to server
+
+gulp
+scp -r dist/*  andromedia@103.5.50.109:/var/www/poza
+

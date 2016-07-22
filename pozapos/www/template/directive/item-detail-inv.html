@@ -1,0 +1,8 @@
+<div class="item item-avatar item-detail">
+    <img alt="" src="{{BASEPATH_IMG+product.image}}">
+    <div class="item-text">
+        <h2>{{product.name}}</h2>
+        <p ng-hide="trans && isOpname(trans.type)">Jumlah : {{product.amount | number}} {{product.unit}}</p>
+        <p ng-show="trans && isOpname(trans.type)">Jml Sistem : {{product.qtyBook | number}} {{product.unit}} <sp/><span >Jml Hitung : {{product.amount| number}} {{product.unit}}</p>
+    </div>
+</div>

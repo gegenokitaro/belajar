@@ -1,0 +1,639 @@
+/*
+ * Copyright 2016 Lumut Studio
+ * http://lumut.co.id/
+ * 
+*/
+
+/*color*/
+
+.primary{
+    color:  #221980;
+}
+
+.secondary{
+    color: #1B1464;
+}
+
+.primary-bg{
+    background-color:  #DB1F26;
+}
+
+.secondary-bg{
+    background-color: #1B1464;
+}
+
+.button-primary, .button-primary:hover{
+    background-color:  #DB1F26;
+    color: white;
+}
+
+.button-primary.activated{
+    background-color:  #BF4F53;
+    color: white;
+
+}
+
+/*global*/
+
+.relative-view{
+    position: relative;
+    width: 100%;
+    padding: 20px 30px;
+}
+
+.limited-view{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.top-50{
+    margin-top: 8%;
+}
+
+.top-10{
+    margin-top: 10px;
+}
+
+.item-divider{
+    /*fallback*/
+    background: url('../img/divider-bg.png');
+    background: url('../../img/divider-bg.png');
+    color: white;
+}
+
+.item-divider h2{
+    padding: 6px 0;
+    color: white !important;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.item-divider h1, .item-divider p{
+    color: white;
+    padding: 2px 0;
+    margin: 0;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.item-divider.item-button-right .button-clear{
+    right: 8px;
+}
+
+.item-divider.has-buttons{
+    padding: 10px 16px;
+}
+
+.item-divider.has-buttons .ion-chevron-up, .item-divider.has-buttons .ion-chevron-down{
+    left: 16px;
+    position: absolute;
+}
+
+.item-divider.has-buttons .button-light, .item-divider.has-buttons .button-light:hover, .item-divider.has-buttons .button-light.activated{
+    color: #DB1F26;
+}
+
+.item h2{
+    font-weight: bold;
+    font-style: italic;
+    color: #444;
+}
+
+.no-border{
+    border: none !important;
+}
+
+.top-align{
+    -webkit-box-align: start;
+    vertical-align: top;
+}
+
+sp{
+    margin-left: 10px;
+}
+
+.no-border{
+    border: none !important;
+}
+
+/*login*/
+
+.logo-full{
+    max-width: 100%;
+}
+
+.login-bg{
+    /*fallback*/
+    background: url('../img/login-bg.png') center;
+    background: url('../../img/login-bg.png') center;
+    background-size: cover;
+}
+
+.logo-avolut{
+    position: relative;
+    margin-top: 220px;
+}
+
+.logo-avolut h2{
+    color: white;
+    font-style: italic;
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.logo-avolut img{
+    max-width: 50%;
+    min-width: 200px;
+}
+
+.logo-avolut p{
+    color: white;
+}
+
+/*form*/
+
+.lolipop-input.energized label{
+    padding: 4px;
+}
+
+.lolipop-input.energized input{
+    color: white !important;
+}
+
+.lolipop-input.energized select{
+    background: transparent;
+    color: white;
+    text-align: left;
+    padding: 0 34px 0 16px;
+}
+
+.lolipop-input.energized option{
+    color: #111 !important;
+}
+
+.lolipop-input.energized input::-webkit-input-placeholder{
+    color: white !important;
+    font-style: italic;
+}
+
+.lolipop-input.energized input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 150px #DB1F26 inset;
+    -webkit-text-fill-color: white;
+}
+
+.lolipop-input.energized input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 150px #DB1F26 inset;
+    -webkit-text-fill-color: white;
+} 
+
+.lolipop-input .item-input{
+    background: transparent;
+    border: none;
+    border-bottom: 1px white solid;
+}
+
+.lolipop-input .item-input-wrapper{
+    background-color: transparent;
+}
+
+.lolipop-input .item-input-wrapper input{
+    width: 100%;
+}
+
+.lolipop-input .input-label{
+    color: white;
+}
+
+.button{
+    /*border-radius: 0 !important;*/
+}
+
+.button-circle{
+    border-radius: 16px;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+}
+
+.button-circle.icon:before{
+    margin-top: 1px !important;
+    line-height: 1.1 !important;
+    margin-left: -7px;
+    font-size: 26px !important;
+}
+
+.button-circle.button-clear{
+    color: #444 !important;
+}
+
+.button.icon:before{
+    font-size: 28px;
+}
+
+span.input-label + input, input.force-input{
+    background: #f5f5f5;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+span.input-label + textarea{
+    background: #f5f5f5;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+p.no-wrap{
+    font-size: 16px;
+    color: #333;
+    white-space: normal;
+    width: 100%;
+}
+
+.item-select select{
+    direction: ltr;
+}
+
+.input-label{
+    font-weight: bold;
+    font-style: italic;
+}
+
+/*sidemenu*/
+
+h1 small{
+    font-size: small;
+}
+
+.bar.bar-dark{
+    border: none;
+    border-bottom: 1px solid #ffc900;
+}
+
+.back-button{
+    color: #fff !important;
+}
+
+.back-button.hide{
+    display: none !important;
+}
+
+.app-title{
+    border-top: none !important;
+    border-bottom: 2px solid white !important;
+    padding: 24px 16px;
+    background: #383335;
+    min-height: 98px;
+}
+
+.app-title h1{
+    margin: 2px 0;
+    font-size: 20px;
+}
+
+.app-title p{
+    margin-top: 5px;
+    margin-right: 20px;
+    line-height: 1.3;
+    color: white !important;
+}
+
+.app-title a{
+    color: white;
+    text-decoration: none;
+}
+
+.menu-left .item {
+    background-color: transparent;
+    border: none;
+    color: #AAAAAA;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.menu-left .item-complex .item-content, .menu-left .item-radio .item-content {
+    background-color: transparent;
+}
+
+.menu-left .item.selected, .menu-left .item.selected .item-content{
+    background: #282526 !important;
+    color: white;
+    border-right: 2px solid #DB1F26;
+    padding-right: 0px;
+}
+
+.item-complex.item-icon-left .item-content {
+    padding-left: 80px;
+}
+
+.side-bg{
+    background-color: #383335;
+}
+
+.logo{
+    width: 70px;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+
+.has-highlight.bar-header{
+    height: 80px;
+    border-bottom: 36px solid #383335;
+}
+
+.has-highlight.bar-header .title{
+    top: 40px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.has-highlight.bar-header .ion-android-search{
+    top: 41px;
+    right: 0px;
+    position: absolute;
+}
+
+.bar-header .back-button{
+    top: 44px;
+    position: absolute;
+}
+
+.bar-header .title-left.header-item{
+    left: 40px !important;    
+}
+
+.pane .has-header{
+    top: 80px;
+}
+
+.logo-slogan{
+    top: 6px;
+    right: 0;
+    position: absolute;
+}
+
+@media (max-width: 766px){
+
+    .on-desktop{
+        display: none;
+    }
+
+    .on-mobile{
+        display: block;
+    }
+
+    .col-offset-50{
+        margin-left: 0 !important;
+    }
+
+    .app-title h1, .app-title p{
+        margin-right: 0px;
+    }
+
+    .item-select select{
+        left: 35%;
+    }
+
+    .partner-list-wrapper{
+        width: 75%;
+    }
+    
+    .logo-text{
+        margin-top: 6px;
+        margin-left: 5px;
+        width: 60px;
+    }
+
+    .logo-slogan{
+        width: 150px;
+        height: 25px;
+    }
+
+    .checkout-modal span.text-right{
+        width: 75% !important;
+        padding-right: 22px;
+    }
+
+}
+
+@media (min-width: 767px) {
+
+    .on-desktop{
+        display: block;
+    }
+
+    .on-mobile{
+        display: none !important;
+    }
+
+    .bar.bar-dark{
+        border-width: 2px;
+        background-color: #1B1464;
+        background-image: linear-gradient(0deg,#1B1464,#1B1464 50%,transparent 50%);
+        color: #444;
+    }
+
+    .menu-content {
+        -webkit-transform: translate3d(275px, 0px, 0px) !important;
+        -moz-transform: translate3d(275px, 0px, 0px) !important;
+        width: calc(100% - 275px) !important;
+        width: -moz-calc(100% - 275px) !important;
+    } 
+
+    .bar-header button.ion-navicon {
+        display: none;
+    }
+
+    .item-select select{
+        left: 200px;
+    }
+
+    .partner-list-wrapper{
+        width: calc(100% - 200px) !important;
+        width: -moz-calc(100% - 200px) !important;
+    }
+
+    .logo-text{
+        margin-left: 10px;
+        width: 80px;
+    }
+
+    .logo-slogan{
+        width: 215px;
+        height: 25px;
+    }
+
+    .checkout-modal span.text-right{
+        width: calc(100% - 200px) !important;
+        width: -moz-calc(100% - 200px) !important;
+        padding-right: 12px;
+    }
+
+}
+
+@media (min-width: 959px) {
+
+    .button-single{
+        min-width: 100px !important;
+    }
+}
+
+/*pos*/
+
+.wrapper-pos{
+    margin-bottom: 90px;
+}
+
+.wrapper-pos .ion-ios-filing-outline{
+    right: 8px;
+}
+
+p{
+    font-size: small;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.item-product, .item-detail{
+    padding-left: 104px;
+    min-height: 98px;
+}
+
+.item-product>img:first-child, .item-detail>img:first-child  {
+    top: 8px;
+    left: 8px;
+    max-width: 84px;
+    max-height: 84px;
+}
+
+.item-chart{
+    min-height: 68px;
+}
+
+.item-chart .item-text{
+    max-width: 70%;
+}
+
+.item-chart .item-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24%;
+    padding: 0;
+}
+
+.item-chart .item-button.multiple{
+    top: 10px;
+    width: auto;
+}
+
+.item-chart .item-text.multiple{
+    max-width: 65%;
+}
+
+.item-chart .item-text.price{
+    width: 50%;
+}
+
+.item-chart .item-button.price{
+    width: 48%;
+}
+
+.item-chart .item-button.price input{
+    width: 60%;
+}
+
+.item-chart .item-button.price button{
+    width: 25%;
+}
+
+.item-chart input{
+    float: right;
+    width: 50%;
+    height: 72px;
+    border: 1px solid #ddd;
+    border-top: none;
+    font-size: 14px;
+    text-align: center;
+}
+
+.item-chart input:focus{
+    background: #ffc900;
+}
+
+.item-chart button{
+    float: right;
+    width: 50%;
+    padding: 12px 0;
+    height: 72px;
+}
+
+.item-chart .item-button a{
+    float: right;
+    margin-right: 10px;
+}
+
+.checkout{
+    position: absolute;
+    height: 90px;
+    width: 100%;
+    bottom: 0;
+    padding: 16px;
+    background: #EDECED;
+    border-top: 2px solid #ddd;
+    border-bottom: 10px solid #DB1F26;
+}
+
+.checkout .button{
+    position: absolute;
+    right: 10px;
+    top:15px;
+}
+
+.checkout strong{
+    font-style: italic;
+}
+
+.checkout h2{
+    font-size: 24px;
+    margin: 2px 0;
+}
+
+.modal{
+    height: 520px;
+}
+
+.modal .bar, .modal .bar h1{
+    /*fallback*/
+    background: url('../img/divider-bg.png');
+    background: url('../../img/divider-bg.png');
+    background-color: white;
+    color: white;
+}
+
+.checkout-modal input{
+    font-size: 16px;
+}
+
+.checkout-modal .item h1{
+    font-size: 24px;
+    font-weight: bold;
+    color: #444;
+    margin-top: 15px;
+}
+
+.product-image{
+    max-width: 200px;
+
+}
+
+.partner-list .item{
+    padding: 5px 0 5px 10px;
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+.partner-list-wrapper .item-button-right .button{
+    margin-top: -3px;
+}

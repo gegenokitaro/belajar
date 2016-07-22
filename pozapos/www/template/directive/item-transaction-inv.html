@@ -1,0 +1,6 @@
+<a ng-href="#/app/inventoryform/view/{{trans.id}}" class="item">
+    <h2 ng-hide="isMovement(trans.type)">{{trans.warehouse}} : {{trans.code}}</h2>
+    <h2 ng-show="isMovement(trans.type)">{{trans.location}} ke {{trans.locationTo || '-'}} : {{trans.code}}</h2>
+    <p>{{trans.type}} <strong>{{trans.status}}</strong></p>
+    <p>{{trans.date| date}} <sp/> {{trans.location}}</p>
+</a>

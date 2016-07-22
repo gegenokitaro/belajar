@@ -1,0 +1,134 @@
+<ion-view view-title="{{title}}">
+    <ion-content>
+        <form novalidate name='productForm' ng-submit="submitProduct(productForm)">
+            <ion-list ng-hide="noFilter">
+                <label class="item item-input">
+                    <span class="input-label">Kode</span>
+                    <input type="text" ng-show="search.isForm" ng-model="product.code">
+                    <span ng-hide="search.isForm" >{{product.code}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Nama</span>
+                    <input type="text" ng-show="search.isForm" ng-model="product.name" required>
+                    <span ng-hide="search.isForm">{{product.name}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Deskripsi</span>
+                    <textarea rows="5" ng-show="search.isForm" ng-model="product.desc"></textarea>
+                    <p class="no-wrap" ng-hide="search.isForm">{{product.desc}}</p>
+                </label>
+                <label ng-show="search.isForm" class="item item-input item-select">
+                    <span class="input-label">Kategori</span>
+                    <select ng-model="product.idCategory" required>
+                        <option ng-repeat="row in categories" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                </label>                
+                <label ng-show="search.isForm" class="item item-input item-select">
+                    <span class="input-label">Satuan</span>
+                    <select ng-model="product.idUOM" required>
+                        <option ng-repeat="row in uoms" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                </label>
+                <div ng-hide="search.isForm">
+                    <label class="item item-input">
+                        <span class="input-label">Kategori</span>
+                        <span>{{product.category}}</span>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Satuan</span>
+                        <span>{{product.unit}}</span>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Lokasi</span>
+                        <span>{{product.warehouse}}</span>
+                    </label>
+                </div>
+                <label class="item item-input">
+                    <span class="input-label">Harga Jual</span>
+                    <input type="tel" ng-show="search.isForm" format="number" ng-model="product.salesprice" required>
+                    <span ng-hide="search.isForm">{{product.salesprice| number}}</span>
+                </label>
+                <div ng-hide="search.isForm">
+                    <label class="item item-input">
+                        <span class="input-label">Harga Beli</span>
+                        <span>{{product.purchaseprice| number}}</span>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Produk Stok</span>
+                        <span>{{product.isStocked ? 'Ya' : 'Tidak'}}</span>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Produk Dijual</span>
+                        <span>{{product.isSold ? 'Ya' : 'Tidak'}}</span>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Produk Dibeli</span>
+                        <span>{{product.isPurchased ? 'Ya' : 'Tidak'}}</span>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Stok</span>
+                        <span>{{product.qty| number}} {{product.unit}}</span>
+                    </label>
+                </div>
+                <label ng-show="search.isForm" class="item item-toggle">
+                    <span class="input-label">Produk Stok</span>
+                    <label class="toggle toggle-balanced">
+                        <input ng-model="product.isStocked" type="checkbox">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </label>
+                <label ng-show="search.isForm" class="item item-toggle">
+                    <span class="input-label">Produk Dijual</span>
+                    <label class="toggle toggle-balanced">
+                        <input ng-model="product.isSold" type="checkbox">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </label>
+                <label ng-show="search.isForm" class="item item-toggle">
+                    <span class="input-label">Produk Dibeli</span>
+                    <label class="toggle toggle-balanced">
+                        <input ng-model="product.isPurchased" type="checkbox">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </label>
+                <label ng-show="search.isForm" class="item item-input">
+                    <span class="input-label">Gambar</span>
+                    <input ng-hide="isNative()" id="product-image" type="file">
+                    <span ng-show="isNative()">
+                        <a ng-click="getCamera(this, 'product')" class="button button-single button-primary icon ion-android-camera" ></a>
+                        <a ng-click="getImage(this, 'product')" class="button button-single button-primary icon ion-image" ></a>
+                    </span>
+                </label>
+                <label ng-show="search.isForm" class="item item-input">
+                    <span class="input-label">&nbsp;</span> 
+                    <img ng-show="product.imageData" class="product-image" alt="" src="{{product.imageData}}">
+                    <img ng-show="product.image && !product.imageData" class="product-image" alt="" src="{{BASEPATH_IMG + product.image}}">
+                </label>
+                <label ng-hide="search.isForm" class="item item-input">
+                    <span class="input-label"><span>Gambar</span></span>
+                    <img class="product-image" alt="" src="{{BASEPATH_IMG + product.image}}">
+                </label>
+            </ion-list>
+
+            <div class="item-divider text-right has-buttons">
+                <a tab-index="-1" ng-click="noFilter = !noFilter" ng-class="noFilter ? 'ion-chevron-down' : 'ion-chevron-up'" class="button button-single button-light icon "> </a>
+                <a ng-hide="params.act === CREATE || isNative()" ng-click="printCode(product)" class="button button-single button-light icon ion-android-print"> </a>
+                <a ng-hide="search.isForm || params.act === CREATE || (!isOwner() && !isInventor())" ng-click="toggleForm(this, true)" class="button button-single button-light icon ion-edit"> </a>
+                <a ng-hide="params.act === CREATE || (!isOwner() && !isInventor())" ng-click="deleteProduct()" class="button button-single button-light icon ion-trash-a"> </a>
+                <a ng-show="!(search.isForm && params.act !== CREATE)" ng-click="goBack()" class="button button-single button-dark icon ion-close-round"> </a>
+                <a ng-show="search.isForm && params.act !== CREATE" ng-click="toggleForm(this, false)" class="button button-single button-dark icon ion-close-round"> </a>
+                <button ng-show="search.isForm || params.act === CREATE" type="submit" class="button button-single button-primary icon ion-checkmark-round"> </button>
+            </div>
+        </form>
+        <ion-list ng-hide="search.isForm">
+            <ion-item class="text-center" ng-show="transactions.length < 1"><h2>Tidak ada transaksi.</h2></ion-item>
+            <item-transaction ng-repeat="trans in transactions"></item-transaction>
+        </ion-list>
+    </ion-content>
+</ion-view>

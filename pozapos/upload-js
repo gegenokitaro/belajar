@@ -1,0 +1,6 @@
+#!/bin/bash
+# upload to server
+
+gulp scripts
+scp dist/lib/build/app.min.js  andromedia@103.5.50.107:/var/www/apclient/lib/build/
+

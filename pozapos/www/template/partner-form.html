@@ -1,0 +1,95 @@
+<ion-view view-title="{{title}}">
+    <ion-content>
+        <form novalidate name='partnerForm' ng-submit="submitPartner(partnerForm)">
+            <ion-list ng-hide="noFilter">
+                <label class="item item-input">
+                    <span class="input-label">Kode</span>
+                    <input type="text" ng-show="search.isForm" ng-model="partner.code">
+                    <span ng-hide="search.isForm">{{partner.code}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Nama</span>
+                    <input type="text" ng-show="search.isForm" ng-model="partner.name" required>
+                    <span ng-hide="search.isForm">{{partner.name}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Deskripsi</span>
+                    <textarea rows="5" type="text" ng-show="search.isForm" ng-model="partner.desc"></textarea>
+                    <p class="no-wrap" ng-hide="search.isForm">{{partner.desc}}</p>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Alamat</span>
+                    <input type="text" ng-show="search.isForm" ng-model="partner.address" required>
+                    <span ng-hide="search.isForm">{{partner.address}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Kota</span>
+                    <input type="text" ng-show="search.isForm" ng-model="partner.city" required>
+                    <span ng-hide="search.isForm">{{partner.city}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Telepon</span>
+                    <input type="tel" ng-show="search.isForm" ng-model="partner.phone" required>
+                    <span ng-hide="search.isForm">{{partner.phone}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Telepon Lainya</span>
+                    <input type="tel" ng-show="search.isForm" ng-model="partner.phone2">
+                    <span ng-hide="search.isForm">{{partner.phone2}}</span>
+                </label>
+                <label ng-show="params.act === CREATE && isOwner()" class="item item-input item-select">
+                    <span class="input-label">Kategori</span>
+                    <select ng-model="partner.idBpGroup">
+                        <option ng-repeat="row in bpGroups" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                </label>
+                <label ng-show="params.act !== CREATE  || (!isOwner() && params.act === CREATE)" class="item item-input">
+                    <span class="input-label">Kategori</span>
+                    <span>{{partner.bpGroup}}</span>
+                </label>
+                <label ng-show="search.isForm && params.act !== CREATE" class="item item-toggle">
+                    <span class="input-label">Aktif</span>
+                    <label class="toggle toggle-balanced">
+                        <input ng-model="partner.status" type="checkbox">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </label>
+                <label ng-hide="search.isForm" class="item item-input">
+                    <span class="input-label">Aktif</span>
+                    <span>{{partner.isActive}}</span>
+                </label>
+                <label ng-show="search.isForm" class="item item-input">
+                    <span class="input-label">Gambar</span>
+                    <input ng-hide="isNative()" id="partner-image" type="file">
+                    <span ng-show="isNative()">
+                        <a ng-click="getCamera(this, 'partner')" class="button button-single button-primary icon ion-android-camera" ></a>
+                        <a ng-click="getImage(this, 'partner')" class="button button-single button-primary icon ion-image" ></a>
+                    </span>
+                </label>
+                <label ng-show="search.isForm" class="item item-input">
+                    <span class="input-label">&nbsp;</span> 
+                    <img ng-show="partner.imageData" class="product-image" alt="" src="{{partner.imageData}}">
+                    <img ng-show="partner.image && !partner.imageData" class="product-image" alt="" src="{{BASEPATH_IMG + partner.image}}">
+                </label>
+                <label ng-hide="search.isForm" class="item item-input">
+                    <span class="input-label"><span>Gambar</span></span>
+                    <img class="product-image" alt="" src="{{BASEPATH_IMG + partner.image}}">
+                </label>
+            </ion-list>
+            <div class="item-divider text-right has-buttons">
+                <a tab-index="-1" ng-click="noFilter = !noFilter" ng-class="noFilter ? 'ion-chevron-down' : 'ion-chevron-up'" class="button button-single button-light icon "> </a>
+                <a ng-hide="search.isForm || params.act === CREATE" ng-click="toggleForm(this, true)" class="button button-single button-light icon ion-edit"> </a>
+                <a ng-hide="params.act === CREATE" ng-click="deletePartner(partner)" class="button button-single button-light icon ion-trash-a"> </a>
+                <a ng-show="!(search.isForm && params.act !== CREATE)" ng-click="goBack()" class="button button-single button-dark icon ion-close-round"> </a>
+                <a ng-show="search.isForm && params.act !== CREATE" ng-click="toggleForm(this, false)" class="button button-single button-dark icon  ion-close-round"> </a>
+                <button ng-show="search.isForm || params.act === CREATE" type="submit" class="button button-single button-primary icon ion-checkmark-round"> </button>                
+            </div>
+        </form>
+        <ion-list ng-hide="search.isForm">
+            <ion-item class="text-center" ng-show="transactions.length < 1"><h2>Tidak ada transaksi.</h2></ion-item>
+            <item-transaction ng-repeat="trans in transactions"></item-transaction>
+        </ion-list>
+    </ion-content>
+</ion-view>

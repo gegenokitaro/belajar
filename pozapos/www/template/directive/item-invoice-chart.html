@@ -1,0 +1,13 @@
+<div ng-click="addInvoice(trans)" class="item">
+    <div ng-hide="trans.idCharge" class="item-button-right">
+        <h2>{{trans.partner}} : {{trans.docOrder || '-'}}</h2>
+        <p>{{trans.isSales ? 'Penjualan' : 'Pembelian'}} <strong>{{trans.status}}</strong></p>
+        <p ng-hide="isRetur(trans.docOrder)">{{trans.date| date}} <sp/>Tagihan Rp {{trans.total| number}} <sp/>Kurang Rp {{trans.rest| number}}</p>
+        <p ng-show="isRetur(trans.docOrder)">{{trans.date| date}} <sp/>Tagihan Rp {{-1*trans.total| number}}</p>
+        <a ng-show="trans.selected" class="button button-dark button-clear button-icon icon ion-ios-checkmark"></a>
+    </div>
+    <div ng-show="trans.idCharge">
+        <h2>{{trans.charge}} </h2>
+        <p><strong>{{trans.idCharge}}</strong></p>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="modal">
+    <ion-header-bar>
+        <h1 class="title">Cari Tagihan / Pembiayaan</h1>
+        <button ng-click="hideInvoice()" class="button button-clear button-icon button-dark ion-ios-close-outline"></button>
+    </ion-header-bar>
+    <ion-content>
+        <form novalidate ng-submit="searchInvoice(this)">
+            <ion-list>
+                <label class="item item-input item-select">
+                    <span class="input-label">Jenis</span>
+                    <select ng-change="methodChange()" ng-model="trans.method">
+                        <option value="{{C_INVOICE}}">Tagihan</option>
+                        <option value="{{C_CHARGE}}">Pembiayaan</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Tgl Dari</span>
+                    <input type="date" ng-model="filter.dateFrom">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Tgl Sampai</span>
+                    <input type="date" ng-model="filter.dateTo">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Nomor</span>
+                    <input type="text" ng-model="filter.code">
+                </label>
+                <div class="row item">
+                    <div class="col col-offset-50">
+                        <a tab-index="-1" ng-click="addInvoices()" class="button button-block button-primary icon ion-checkmark-round"></a>
+                    </div>
+                    <div class="col">
+                        <button tab-index="-1" type="submit" class="button button-block button-primary icon ion-android-search"></button>
+                    </div>
+                </div>
+                <item-invoice-chart ng-repeat="trans in result"></item-invoice-chart>
+            </ion-list>
+            <ion-infinite-scroll
+                ng-if="hasMoreInvoice()"
+                on-infinite="loadMoreInvoice()"
+                distance="10%">
+            </ion-infinite-scroll>
+        </form>
+    </ion-content>
+</div>

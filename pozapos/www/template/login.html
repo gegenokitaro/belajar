@@ -1,0 +1,70 @@
+<ion-view view-title="{{CONFIG.APP_NAME}}" ng-class="'primary-bg has-highlight'">
+    <ion-content >
+        <div class="limited-view relative-view text-center login-bg">
+            <img ng-hide="state.loginLoading" class="top-50 logo-full" alt="logo" src="img/icon-full.png"/>
+            <div ng-hide="state.loginReady || state.loginLoading">
+                <div class="logo-avolut">
+                    <h2>Brought to you by :</h2>
+                    <img alt="logo" src="img/avolut.png"/>
+                </div>
+            </div>
+            <div ng-show="state.loginLoading">
+                <div class="top-50">&nbsp;</div>
+                <div class="logo-avolut">
+                    <h2>Hello {{user.username}}</h2>
+                    <p>Preparing Apps for you...<br/>Please Wait</p>
+                </div>
+            </div>
+            <div ng-show="state.loginReady && !state.loginLoading">
+                <div class="login-form top-50">
+                    <form novalidate name='loginForm' ng-submit="login(loginForm)">
+                        <div class="list lolipop-input text-left energized">
+                            <label class="item item-input item-select">
+                                <div class="input-label">
+                                    Server
+                                </div>
+                                <select ng-change="changeServer()" ng-model="state.server">
+                                    <option ng-repeat="row in servers" value="{{row.id}}">{{row.name}}</option>
+                                </select>
+                            </label>
+                            <label class="item item-input item-select">
+                                <div class="input-label">
+                                    Perusahaan
+                                </div>
+                                <select ng-change="changeClient()" ng-model="user.idClient">
+                                    <option value="">-- Pilih perusahaan --</option>
+                                    <option ng-repeat="row in clients" value="{{row.id}}">{{row.name}}</option>
+                                </select>
+                            </label>
+                            <label class="item item-input item-select">
+                                <div class="input-label">
+                                    Lokasi
+                                </div>
+                                <select ng-model="user.idWarehouse">
+                                    <option value="">-- Pilih lokasi --</option>
+                                    <option ng-repeat="row in warehouses" value="{{row.id}}">{{row.name}}</option>
+                                </select>
+                            </label>
+                            <label class="item item-input">
+                                <input type="text" placeholder="ID" ng-model="user.username" required>
+                            </label>
+                            <label class="item item-input">
+                                <input type="password" placeholder="Password" ng-model="user.password" required>
+                            </label>
+                        </div>
+                        <p class="text-center light" ng-show="haserror">
+                            <i class="icon ion-minus-circled"></i> {{message}}
+                        </p>
+                        <p class="text-center light" ng-show="loginForm.$invalid && hassubmit">
+                            <i class="icon ion-minus-circled"></i> ID dan password tidak boleh kosong!
+                        </p>
+                        <button type="submit" class="button button-block button-dark">
+                            LOG IN
+                        </button> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+

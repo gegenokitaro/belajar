@@ -1,0 +1,10 @@
+<div class="item item-avatar item-chart">
+    <img alt="" src="{{BASEPATH_IMG+product.image}}">
+    <div class="item-text">
+        <h2>{{product.name}}</h2>
+        <p ng-show="trans && !trans.isSales">Jumlah : {{product.amount | number}} <sp/> Diterima : {{product.amountDelivered |number}}</p>
+    </div>
+    <div ng-show="product.amountAcc" class="item-button">
+        <input type="tel" focus-input ng-change="calculateAcc()" format="number" ng-model="product.amountAcc">
+    </div>
+</div>

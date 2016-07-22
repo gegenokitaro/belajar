@@ -1,0 +1,83 @@
+<ion-view view-title="{{title}}">
+    <ion-content>
+        <div class="item item-divider">
+            <p>Total</p>
+            <h1>Rp {{trans.total| number}}</h1>
+        </div>
+        <form novalidate name="paymentForm" ng-submit="submitPayment(paymentForm)">
+            <ion-list ng-hide="noFilter">
+                <label class="item item-input">
+                    <span class="input-label">Rekening</span>
+                    <span>{{trans.bank|| trans.name}} : {{trans.account}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Tanggal</span>
+                    <span>{{trans.date|date}}</span>
+                </label>
+                <label ng-hide="isForm" class="item item-input">
+                    <span class="input-label">Jenis</span>
+                    <span>{{trans.type}}</span>
+                </label>
+                <label ng-show="isForm" class="item item-input item-select">
+                    <span class="input-label">Jenis</span>
+                    <select ng-focus="typeClick()" ng-change="typeChange()" ng-model="trans.idType" required>
+                        <option ng-repeat="row in types" value="{{row.id}}">{{row.name}}</option>
+                    </select>
+                </label>
+                <label ng-hide="isForm" class="item item-input">
+                    <span class="input-label">Partner</span>
+                    <span >{{trans.partner}}</span>
+                </label>
+                <div ng-show="isForm" class="item item-input">
+                    <span class="input-label">Partner</span>
+                    <div class="partner-list-wrapper">
+                        <div>
+                            <input ng-click="partnerChange()" class="force-input" type="text" ng-show="partnerNotExist && trans.idPartner" ng-model="trans.partner" readonly>
+                            <input ng-hide="!partnerNotExist || trans.idPartner" class="force-input" type="text" ng-model="search.filterPartner" ng-change="searchPartnerOff(this)" placeholder="Cari Partner ...">
+                            <!--<a tabindex="-1" ng-href="#/app/partnerform/create/0" class="button button-primary button-circle icon ion-plus-round"></a>-->
+                            <span ng-hide="partnerNotExist">{{PartnerName}}</span>
+                        </div>
+                        <ion-list ng-hide="!partnerNotExist" class='partner-list'>
+                            <item-partner-chart ng-repeat="partner in search.resultPartner"></item-partner-chart>
+                        </ion-list>
+                    </div>
+                </div>
+                <label class="item item-input">
+                    <span class="input-label">Nomor</span>
+                    <input ng-show="isForm" type="text" ng-model="trans.code">
+                    <span ng-hide="isForm" >{{trans.code}}</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Catatan</span>
+                    <textarea rows="5" type="text" ng-show="isForm" ng-model="trans.desc"></textarea>
+                    <p class="no-wrap" ng-hide="isForm">{{trans.desc}}</p>
+                </label>
+                <label ng-hide="isForm" class="item item-input">
+                    <span class="input-label">Status</span>
+                    <span >{{trans.status}}</span>
+                </label>
+                <label ng-show="!isForm && trans.idCharge" class="item item-input">
+                    <span class="input-label">Pembiayaan</span>
+                    <span>{{trans.charge}}</span>
+                </label>
+            </ion-list>
+            <div class="item-divider has-buttons text-right">
+                <a tab-index="-1" ng-click="noFilter = !noFilter" ng-class="noFilter ? 'ion-chevron-down' : 'ion-chevron-up'" class="button button-single button-light icon "> </a>
+                <a ng-show="params.act !== CREATE && isComplete(trans.status)" title="Batal" ng-click="cancelPayment()" class="button button-single button-light icon ion-android-unlock"> </a>
+                <a ng-show="params.act === CREATE" tab-index="-1" ng-click="showInvoice()" class="button button-single button-light icon ion-plus-round"></a>
+                <a ng-click="goBack()" title="Kembali" class="button button-single button-dark icon ion-close-round"> </a>
+                <button ng-show="params.act === CREATE" class="button button-single button-primary icon ion-checkmark-round"> </button>
+            </div>
+        </form>
+        <div ng-hide="isForm || !trans.idCharge" class="item">
+            <h2>Pembiayaan {{trans.charge}}</h2>
+            <h2>Rp {{trans.total| number}}</h2>
+        </div>
+        <ion-list ng-hide="isForm">
+            <item-payment ng-repeat="payment in trans.details"></item-payment>
+        </ion-list>
+        <ion-list ng-show="isForm">
+            <item-chart-payment ng-repeat="payment in chart"></item-chart-payment>
+        </ion-list>
+    </ion-content>
+</ion-view>

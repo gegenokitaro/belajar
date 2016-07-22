@@ -1,0 +1,66 @@
+<div class="modal checkout-modal">
+    <ion-header-bar>
+        <h1 class="title">Checkout</h1>
+        <button ng-click="hideCheckout()" class="button button-clear button-icon button-dark ion-ios-close-outline"></button>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Pembayaran
+                </div>
+                <select ng-change="changeMethodPOS(this)" ng-model="trans.method">
+                    <option value="{{C_CASH}}" selected>Tunai</option>
+                    <option value="{{C_CREDIT}}" >Kartu Kredit</option>
+                    <option value="{{C_DEBIT}}" >Kartu Debit</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Pajak
+                </div>
+                <select ng-change="changeTax(this)" ng-model="trans.idTax">
+                    <option ng-repeat="tax in taxes" value="{{tax.id}}" >{{tax.name+" "+tax.rate+"%"}}</option>
+                </select>
+            </label>
+            <label ng-show="trans.method !== 'B'" class="item item-input item-select">
+                <div class="input-label">
+                    Bank
+                </div>
+                <select ng-model="trans.idBank">
+                    <option ng-repeat="bank in banks" value="{{bank.id}}" selected>{{bank.name}}</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label"><strong>Tunai (Rp)</strong></span>
+                <input ng-keyup="onEnter($event, payCheckout)" payment-input focus-input focus-me="isCheckout" class="text-right" type="tel" format="number" ng-model="trans.cash" placeholder="Tunai">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Subtotal</span>
+                <span class="text-right">{{trans.total| number}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">{{trans.tax.name}}</span>
+                <span class="text-right">{{trans.tax.rate * trans.total / 100 | number}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label"><h1>TOTAL</h1></span>
+                <span class="text-right"><h1>{{trans.tax.rate * trans.total / 100 + trans.total| number}}</h1></span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label"><strong>Kembali</strong></span>
+                <span class="text-right">{{trans.cash - (trans.tax.rate * trans.total / 100 + trans.total)| number}}</span>
+            </label>
+        </ion-list>
+        <div class="text-right item">
+            <button ng-click="hideCheckout()" tab-index="-1" class="button button-single button-dark icon ion-close-round"> </button>
+            <button ng-click="payCheckout()" class="button button-single button-primary icon ion-checkmark-round"> </button>
+        </div>
+        <div class="item">
+        <br/>
+        <br/>
+        <br/>
+        <div class="clearfix"></div>
+        </div>
+    </ion-content>
+</div>

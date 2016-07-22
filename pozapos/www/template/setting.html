@@ -1,0 +1,82 @@
+<ion-view view-title="Pengaturan">
+    <ion-content>
+        <form novalidate name='passForm' ng-submit="submitPassword(passForm)">
+            <ion-list>
+                <div class="item item-divider">
+                    Ganti Password
+                </div>
+                <label class="item item-input">
+                    <span class="input-label">Password Lama</span>
+                    <input type="password" ng-model="user.oldPassword" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password Baru</span>
+                    <input type="password" ng-model="user.newPassword" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Konfirmasi</span>
+                    <input type="password" ng-model="user.newPasswordConfirm"  required>
+                </label>
+                <label ng-show="user.newPassword && user.newPassword != user.newPasswordConfirm" class="item item-input">
+                    <span class="input-label">&nbsp;</span>
+                    <span class="assertive">Konfirmasi password baru tidak sama.</span>
+                </label>
+                <div class="item text-right">
+                    <button type="submit" class="button button-single button-primary icon ion-checkmark-round"> </button>
+                </div>
+            </ion-list>
+        </form>
+        <ion-list>
+            <div class="item item-divider">
+                Pengaturan Printer
+            </div>
+            <label class="item  item-input item-select">
+                <span class="input-label">Format Cetak</span>
+                <select ng-change="changePrinter()" ng-model="setting.printFormat" required>
+                    <option value="{{PRINT_NOTA}}">Nota (A5)</option>
+                    <option value="{{PRINT_STRUK}}">Struk</option>
+                </select>
+            </label>
+            <label ng-show="isNative()" class="item item-input item-select">
+                <span class="input-label">Printer</span>
+                <select ng-change="changePrinter()" ng-model="setting.printer" required>
+                    <option value="{{PRINT_WIRELESS}}">Wireless Printer</option>
+                    <option value="{{PRINT_MOBILE}}">Mobile Bluetooth Printer</option>
+                </select>
+            </label>
+            <label ng-show="!isNative()" class="item item-input item-select">
+                <span class="input-label">Printer</span>
+                <select ng-change="changePrinter()" ng-model="setting.printer" required>
+                    <option value="{{PRINT_WIRELESS}}">Wireless / USB Printer</option>
+                </select>
+            </label>
+            <label ng-show="!isNative()" class="item item-input item-select">
+                <span class="input-label">Printer Barcode</span>
+                <select ng-change="changePrinter()" ng-model="setting.printerBarcode">
+                    <option ng-repeat="row in printers" value="{{row.id}}">{{row.name}}</option>
+                </select>
+            </label>
+        </ion-list>
+        <ion-list ng-show="isNative()">
+            <div class="item item-divider">
+                Info Perangkat
+            </div>
+            <label class="item  item-input">
+                <span class="input-label">Platform</span>
+                {{device ? device.platform : 'Browser'}}
+            </label>
+            <label class="item  item-input">
+                <span class="input-label">Versi</span>
+                {{device ? device.version : 'Browser'}}
+            </label>
+            <label class="item  item-input">
+                <span class="input-label">Manufaktur</span>
+                {{device ? device.manufacturer : 'Browser'}}
+            </label>
+            <label class="item  item-input">
+                <span class="input-label">Model</span>
+                {{device ? device.model : 'Browser'}}
+            </label>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,7 @@
+<div class="lolipop-input item item-input-inset">
+    <label class="item-input-wrapper">
+        <input focus-me="isIdle" ng-keyup="onEnter($event, addProductPOS, this)" ng-change="searchPos(this)" focus-input type="text" ng-model="search.keyword" placeholder="Cari produk ...">
+    </label>
+    <button ng-show="isNative()" tabindex="-1" ng-click="getBarcode(this, 'keyword')" class="button button-primary button-circle icon ion-ios-barcode"></button>
+    <button tabindex="-1" ng-click="showProduct(this)" class="button button-primary button-circle icon ion-plus-round"></button>
+</div>
