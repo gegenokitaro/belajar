@@ -20,9 +20,10 @@
                 </label>
                 <label ng-show="isForm" class="item item-input item-select">
                     <span class="input-label">Jenis</span>
-                    <select ng-focus="typeClick()" ng-change="typeChange()" ng-model="trans.idType" required>
+                    <select ng-show="typeNotExist" ng-focus="typeClick()" ng-change="typeChange()" ng-model="trans.idType" required>
                         <option ng-repeat="row in types" value="{{row.id}}">{{row.name}}</option>
                     </select>
+                    <span ng-show="!typeNotExist">{{trans.type.name}}</span>
                 </label>
                 <label ng-hide="isForm" class="item item-input">
                     <span class="input-label">Partner</span>
@@ -64,7 +65,7 @@
             <div class="item-divider has-buttons text-right">
                 <a tab-index="-1" ng-click="noFilter = !noFilter" ng-class="noFilter ? 'ion-chevron-down' : 'ion-chevron-up'" class="button button-single button-light icon "> </a>
                 <a ng-show="params.act !== CREATE && isComplete(trans.status)" title="Batal" ng-click="cancelPayment()" class="button button-single button-light icon ion-android-unlock"> </a>
-                <a ng-show="params.act === CREATE" tab-index="-1" ng-click="showInvoice()" class="button button-single button-light icon ion-plus-round"></a>
+                <a ng-show="params.act === CREATE && transNotExist" tab-index="-1" ng-click="showInvoice()" class="button button-single button-light icon ion-plus-round"></a>
                 <a ng-click="goBack()" title="Kembali" class="button button-single button-dark icon ion-close-round"> </a>
                 <button ng-show="params.act === CREATE" class="button button-single button-primary icon ion-checkmark-round"> </button>
             </div>

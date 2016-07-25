@@ -104,7 +104,7 @@ angular.module('apclient', ['ionic', 'apclient-config', 'apclient-controller', '
                         authenticate: true
                     })
                     .state('app.paymentform', {
-                        url: '/paymentform/:act/:id/:type/:partner/:trans',
+                        url: '/paymentform/:act/:id/:transtype/:partner/:trans',
                         views: {
                             'menuContent': {
                                 templateUrl: 'template/payment-form.html',

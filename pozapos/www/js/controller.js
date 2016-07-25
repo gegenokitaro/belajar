@@ -1318,7 +1318,6 @@ angular.module('apclient-controller', ['apclient-directive', 'apclient-helper'])
                     idTrans: $stateParams.id
                 };
                 $scope.trans = $stateParams.act === $scope.$parent.CREATE ? {total: 0, date: new Date(), paid: 0, details: [], accs: []} : {};
-
                 $scope.varPrice = $stateParams.type === $scope.$parent.SALES ? 'salesprice' : 'purchaseprice';
                 $scope.partnerlabel = $stateParams.type === $scope.$parent.SALES ? 'Pelanggan' : 'Pemasok';
                 $scope.params = $stateParams;
@@ -2227,7 +2226,7 @@ angular.module('apclient-controller', ['apclient-directive', 'apclient-helper'])
                 $scope.isForm = $stateParams.act === $scope.$parent.CREATE || $stateParams.act === $scope.$parent.UPDATE;
                 $scope.params = $stateParams;
                 $scope.transNotExist = $stateParams.trans === '';
-                $scope.typeNotExist = $stateParams.type === '';
+                $scope.typeNotExist = $stateParams.transtype === '';
                 $scope.partnerNotExist = $stateParams.partner === '';
                 $scope.search = {
                     filterPartner: '',
@@ -2241,6 +2240,7 @@ angular.module('apclient-controller', ['apclient-directive', 'apclient-helper'])
                 $scope.trans = $stateParams.act === $scope.$parent.CREATE ? {details: []} : false;
                 $scope.PartnerName = '';
                 $scope.dataPartner = [];
+                $scope.dataTrans = [];
             };
             $scope.initWs = function () {
                 $scope.init();
@@ -2281,7 +2281,6 @@ angular.module('apclient-controller', ['apclient-directive', 'apclient-helper'])
                         $scope.trans.date = new Date();
                         $scope.trans.details = [];
                         $scope.trans.method = $scope.$parent.C_INVOICE;
-
                         if (!$scope.partnerNotExist) {
                             $ws.getTransPartners(function (respon) {
                                 $scope.dataPartner = respon;
@@ -2291,6 +2290,7 @@ angular.module('apclient-controller', ['apclient-directive', 'apclient-helper'])
                                     };
                                 };
                                 $scope.trans.idPartner = $stateParams.partner;
+                                $scope.trans.partner = $scope.PartnerName;
                             }, $scope.$parent.errorWS, {id: $stateParams.id});
                         };
 
@@ -2298,14 +2298,31 @@ angular.module('apclient-controller', ['apclient-directive', 'apclient-helper'])
                             $scope.types = respon;
                             $scope.trans.type = $scope.types.length > 0 ? $scope.types[0] : {};
                             $scope.$parent.delaySet(function () {
-                                $scope.trans.idType = $scope.types.length > 0 ? $scope.types[0].id : 0;
+                                if ($scope.typeNotExist) {
+                                    $scope.trans.idType = $scope.types.length > 0 ? $scope.types[0].id : 0;
+                                } else {
+                                    for (var i = $scope.types.length - 1; i >= 0; i--) {
+                                        if ($scope.types[i].name === $stateParams.transtype) {
+                                            $scope.trans.type = $scope.types[i];
+                                            $scope.trans.idType = $scope.types[i].id;
+                                        }
+                                    };
+                                    $scope.trans.idTrans === $stateParams.trans;
+                                    if (!$scope.transNotExist) {
+                                        $scope.searchInvoice();
+                                        
+                                    };
+                                };
                             });
                             $ws.getNextPayment($scope.trans.type.name, function (respon) {
                                 $scope.trans.code = respon.data;
                                 $scope.$parent.initAllPartners($scope, 0, false, $scope.trans.type.name.indexOf('AR') > -1 ? $scope.$parent.CUSTOMER_AFF : $scope.$parent.VENDOR_AFF);
+
                             }, $scope.$parent.errorWS)
 
                         }, $scope.$parent.errorWS);
+
+                        
                     }, $scope.$parent.errorWS, {id: $scope.filter.id});
                 }
             };
@@ -2423,9 +2440,19 @@ angular.module('apclient-controller', ['apclient-directive', 'apclient-helper'])
                 $scope.$parent.showLoading();
                 var onRespon = function (respon, maxpage) {
                     $scope.result = respon;
+                    console.log(respon);
                     $scope.filter.pageInvoice++;
                     $scope.filter.maxpageInvoice = maxpage;
                     $scope.$parent.hideLoading();
+                    if (!$scope.transNotExist) {
+                        for (var i = $scope.result.length - 1; i >= 0; i--) {
+                            if ($scope.result[i].idTrans === $stateParams.trans) {
+                                $scope.dataTrans = $scope.result[i];
+                            }
+                        }
+                    $scope.addInvoice($scope.dataTrans);
+                    $scope.addInvoices();
+                    }
                 };
                 if ($scope.trans.method === $scope.$parent.C_INVOICE) {
                     $ws.getInvoices(onRespon, $scope.$parent.errorWS, processFilter());
